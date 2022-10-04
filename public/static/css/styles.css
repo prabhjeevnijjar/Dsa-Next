@@ -81,15 +81,15 @@
     .signupbase {
       width:60%;
     }
-    .leftcolumn{
-      flex-basis: none;
-    }
-  }
-  @media screen and (max-width: 768px){
+
     .leftcolumn{
       flex-basis: 100%;
     }
+    .width{
+      width: 75%;
+    }
   }
+ 
   /* post card */
   .contentcard {
     margin: 4px 20px 10px 8px;
@@ -177,4 +177,94 @@
     width: 120px;
     height: 120px;
     background-color: blueviolet;
+  }
+  .profile-profile_name{
+width: 50%;;
+  }
+  /* //discussion page */
+  .header{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+  }
+  .logo img{
+    width: 45px;
+    margin-right: 10px;
+  }
+  .discussion{
+    margin: 4px 20px 10px 8px;
+  }
+  
+  .discussion_comments_enclosure{
+    overflow: auto;
+    height: 350px;
+    width: 100%;
+    border-style: solid;
+    border-width: 0.25px;
+    padding: 15px;
+    border-color: rgb(214, 214, 214);
+    margin-top:25px;
+    border-radius: 8px;
+  
+  }
+  .discussion_comment_box{
+    border-style: solid;
+    width:100%;
+    padding: 10px 15px 10px 15px;
+    border-color: rgb(214, 214, 214);
+      border-width: 0.25px;
+  
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+  .discussion_addnew textarea{
+    width:90%;
+  }
+  
+  .discussion_addnew textarea{
+    width:100%;
+    display: block;
+    border-radius: 6px;
+    border-width: 0.25px;
+    border-color: rgb(185, 185, 185);
+    padding: 3px 3px 3px 9px;
+  }
+  .discussion_addnew textarea:focus, textarea:focus, select:focus{
+    outline: none;
+  }
+  .discussion_addnew button{
+      margin-top: 8px;
+      border: none;
+      border-color:grey;
+      border-radius:40px;
+      padding: 6px 15px 6px 15px;
+  }
+  /* fab */
+  .back_fab {
+    position: fixed;
+    bottom: 75px;
+    width: 60px;
+    height: 60px;
+    right: 25px;
+    cursor: pointer;
+    border-radius: 50px;
+    background-color: rgba(128, 128, 128, 0.27);
+  }
+  .back_fab img{
+    margin: 6px;
+  }
+  .post_base{
+   
+  }
+  .form-control {
+    box-shadow: none!important;
+  }
+  .form-control:focus {
+    border-color: #cccccc;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .dropdown-item:active, .dropdown-item:active {
+    border: none;
+    text-decoration: none;
   }

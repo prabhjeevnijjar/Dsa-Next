@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useState } from 'react';
+import AddFab from '../common/Headers.js/AddFab';
 import PostCard from '../components/HomeComp/PostCard';
 
 const HomePage = () => {
@@ -84,6 +85,7 @@ const HomePage = () => {
                 Recommended
               </div>
             </div>
+            <AddFab />
           </Fragment>
         )}
       </div>

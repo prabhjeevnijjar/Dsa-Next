@@ -31,12 +31,12 @@ const Navbar = () => {
                 <label className="btn-circle btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   P
                 </label>
-                <div className="dropdown-menu " aria-labelledby="dropdownMenu2">
+                <div className="dropdown-menu" style={{ left: 'auto !important', right: '5px' }} aria-labelledby="dropdownMenu2">
                   <button className="dropdown-item" type="button">
                     <Link href="/my-profile">My Profile</Link>
                   </button>
                   <button className="dropdown-item" type="button">
-                    <Link href="/my-bookmarks">New Resource</Link>
+                    <Link href="/new">New Post</Link>
                   </button>
                   <button className="dropdown-item" type="button">
                     <Link href="/my-bookmarks">Bookmarks</Link>
