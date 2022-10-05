@@ -24,11 +24,11 @@ const HomePage = () => {
 
   return (
     <div>
-      <div className="basecontainer">
+      <div className="mx-auto">
         {isDesktop ? (
-          <div className="datacontainer">
+          <div className="d-flex mx-5 my-5">
             <div className="leftcolumn">
-              <h2>Posts</h2>
+              <h2>All Posts</h2>
               <div className="contentcards">
                 <PostCard />
                 <PostCard />

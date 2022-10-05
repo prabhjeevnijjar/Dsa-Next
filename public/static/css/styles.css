@@ -1,14 +1,6 @@
-.no_link_style a{
-  color: white;
-  text-decoration: none; /* no underline */
- }
-.datacontainer{
-    left:20;
-    right:20px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    padding:40px 10px 0px;
+  .no_link_style a{
+    color: white;
+    text-decoration: none; /* no underline */
   }
   .leftcolumn{
     display: flex;
@@ -81,7 +73,6 @@
     .signupbase {
       width:60%;
     }
-
     .leftcolumn{
       flex-basis: 100%;
     }
@@ -89,17 +80,11 @@
       width: 75%;
     }
   }
- 
+
   /* post card */
   .contentcard {
     margin: 4px 20px 10px 8px;
     padding: 6px 10px 0px 10px;
-    /* border-style: solid;
-    border-width: 0.25px;
-    border-radius: 4px;
-    border-right:none;
-    border-left: none;
-    border-color: grey; */
   }
   .contentcard_title{
     font-size: 24px;
@@ -133,11 +118,6 @@
     border: none;
     background-color: rgb(252, 209, 216);
     border-radius: 6px;
-  }
-  .contentcard_socials_bookmark button {
-
-  }
-  .contentcard_socials_bookmark{
   }
   .contentcard_socials_comment img{
     width:28px;
@@ -220,7 +200,6 @@ width: 50%;;
   .discussion_addnew textarea{
     width:90%;
   }
-  
   .discussion_addnew textarea{
     width:100%;
     display: block;
@@ -252,9 +231,6 @@ width: 50%;;
   }
   .back_fab img{
     margin: 6px;
-  }
-  .post_base{
-   
   }
   .form-control {
     box-shadow: none!important;

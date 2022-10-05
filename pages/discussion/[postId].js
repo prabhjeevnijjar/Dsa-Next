@@ -8,7 +8,7 @@ const DiscussionPage = () => {
   return (
     <Fragment>
       <div className="rootclass">
-        <div className="d-flex-col mx-5 mx-auto my-5 width">
+        <div className="d-flex-col my-5 mx-auto w-75">
           <div className="header">
             <div className="logo">
               <img src={assetPrefix + '/static/icons/discussion.png'} alt="comment section" />
