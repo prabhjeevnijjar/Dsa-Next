@@ -58,6 +58,7 @@
   }
   .button {
     font-size: 18px;
+    width: 100%;
     height: 35px;
     background: #28a745;
     color: white;

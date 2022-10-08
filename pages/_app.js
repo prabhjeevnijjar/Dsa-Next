@@ -1,17 +1,25 @@
 import { Fragment } from 'react';
 import Head from 'next/head';
-import '../public/static/css/styles.css';
 import Layout from '../common/Layout';
+import { Toaster } from 'react-hot-toast';
+import { Provider } from 'react-redux';
+import { useStore } from '../redux/Store';
+import '../public/static/css/styles.css';
 
 function MyApp({ Component, pageProps }) {
+  const store = useStore(pageProps?.reduxState);
+
   return (
     <Fragment>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Toaster />
+      <Provider store={store}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
     </Fragment>
   );
 }

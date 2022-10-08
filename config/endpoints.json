@@ -1,3 +1,4 @@
 {
-    
+    "checkEmail":"/api/check-email",
+    "registerApi":"/api/register"
 }
