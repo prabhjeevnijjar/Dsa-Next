@@ -3,13 +3,11 @@ import getConfig from 'next/config';
 import thunkMiddleware from 'redux-thunk';
 import rootReducers from '../Reducers/rootReducer';
 import { configureStore } from '@reduxjs/toolkit';
-// import logger from 'redux-logger';
 
 const { baseUrl } = getConfig().publicRuntimeConfig;
 let store;
 
 function initStore(initialState) {
-  console.log({ baseUrl });
   const axiosInstance = axios.create({
     baseURL: baseUrl || 'http://localhost:3001',
   });

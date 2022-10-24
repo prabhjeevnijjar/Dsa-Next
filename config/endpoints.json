@@ -1,4 +1,6 @@
 {
     "checkEmail":"/api/check-email",
+    "loginApi": "/api/login",
+    "checkTokenApi": "/api/check-token",
     "registerApi":"/api/register"
 }

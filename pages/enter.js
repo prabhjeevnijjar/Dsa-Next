@@ -6,7 +6,7 @@ import { checkInputHandler } from '../utils/GlobalFunctions';
 const { Fragment, useState } = require('react');
 
 const EnterPage = (props) => {
-  const { checkLoginStore, CheckEmailAction, authStepSuccess, CheckRegisterAction } = props;
+  const { checkLoginStore, CheckEmailAction, authStepSuccess, CheckRegisterAction, LoginAction } = props;
   const [state, setState] = useState({ fname: '', lname: '', email: '', password: '', cpassword: '' });
 
   const onChangeHandler = (event) => {
@@ -27,6 +27,19 @@ const EnterPage = (props) => {
     }
   };
 
+  const loginSubmmitHandler = () => {
+    if (!state.email || !state.password) {
+      toast.error('Please Enter Credentials !');
+    } else {
+      const data = {
+        email: state.email,
+        password: state.password,
+      };
+      LoginAction(data);
+      setState({ ...state, password: '' });
+    }
+  };
+
   const submitSignUp = () => {
     if (!state.fname) {
       toast.error('Enter valid First Name');
@@ -43,8 +56,13 @@ const EnterPage = (props) => {
         PasswordConfirmation: state.cpassword,
       };
       CheckRegisterAction(data);
+      setState({ ...state, fname: '', lname: '', password: '', cpassword: '' });
     }
   };
+
+  // useEffect(() => {
+  //   checkLoginStore.onStep = 1;
+  // });
 
   return (
     <Fragment>
@@ -100,10 +118,10 @@ const EnterPage = (props) => {
                 <input name="email" type="email" value={state.email} required readOnly />
                 <br />
                 <a>Password</a> <br />
-                <input name="password" type="text" minLength={8} required /> <br />
+                <input name="password" type="password" value={state.password} required onChange={(e) => onChangeHandler(e)} /> <br />
                 <br />
                 <br />
-                <input className="button" type="submit" value="Login" />
+                <input className="button" type="button" value="Login" onClick={() => loginSubmmitHandler()} />
               </form>
             </div>
           </div>
@@ -195,6 +213,7 @@ const mapDispatchToProps = (dispatch) => {
     authStepSuccess: (payload) => dispatch(actionType.authStepSuccess(payload)),
     CheckEmailAction: (payload) => dispatch(authActionCreator.CheckEmailAction(payload)),
     CheckRegisterAction: (payload) => dispatch(authActionCreator.CheckRegisterAction(payload)),
+    LoginAction: (payload) => dispatch(authActionCreator.LoginAction(payload)),
   };
 };
 
