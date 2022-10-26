@@ -28,7 +28,6 @@ export const LoginAction = (payload) => async (dispatch, getState, api) => {
   return api
     .post(API.loginApi, payload)
     .then((res) => {
-      console.log({ res });
       if (res.data.code === 200) {
         if (res.data.status === true) {
           Cookies.set('dsa-token', res.data.data.token);
@@ -41,17 +40,14 @@ export const LoginAction = (payload) => async (dispatch, getState, api) => {
       }
     })
     .catch((e) => {
-      console.log({ e });
       toast.error('Invalid Credentials');
     });
 };
 
 export const checkTokenAction = (payload) => async (dispatch, getState, api) => {
-  console.log({ payload });
   return api
     .post(API.checkTokenApi, {}, { headers: { 'Content-Type': 'application/json', Accept: 'application/json', Authorization: `Bearer ${payload}` } }, { method: 'get' })
     .then((res) => {
-      console.log({ res });
       if (res.data?.code === 200) {
         if (res.data.status === true) dispatch(actionType.userAuthSuccess({ ...res.data.data, token: res.data.token, isLogin: true }));
         Cookies.set('auth-token', res.data.data.token);
@@ -69,10 +65,8 @@ export const CheckRegisterAction = (payload) => async (dispatch, getState, api) 
     .post(API.registerApi, payload)
     .then((res) => {
       if (res.data.code === 200) {
-        if (res.data.status === true) {
-          dispatch(actionType.authStepSuccess({ onStep: 2 }));
-          toast('Registration Successful !');
-        }
+        toast('Registration Successful !');
+        dispatch(LoginAction({ email: payload.Email, password: payload.Password }));
         dispatch(actionType.loadingSuccess({ loginLoading: false }));
       } else {
         toast.sucess('Please Register');

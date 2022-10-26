@@ -20,7 +20,6 @@ function MyApp({ Component, pageProps }) {
   };
 
   useEffect(() => {
-    console.log('I am in layout', Cookies.get('dsa-token'));
     setTokenFn();
   });
 

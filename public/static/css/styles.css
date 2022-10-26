@@ -245,3 +245,11 @@ width: 50%;;
     border: none;
     text-decoration: none;
   }
+  .dropdown-menu {
+    left: -100px;
+  }
+  .scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
