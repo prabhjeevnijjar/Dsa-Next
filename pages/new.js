@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import DropdownSearchComp from '../components/commonComp/dropdownSearchComp';
+import DropdownSearchComp from '../components/commonComp/DropdownSearchComp';
 import { RESOURCE_TYPE, RESOURCE_SUB_TYPE, RESOURCE_STUDY_TYPE } from '../utils/constants';
 const NewPostPage = () => {
   return (
