@@ -1,16 +1,20 @@
 import { Fragment, useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import AddFab from '../common/Headers.js/AddFab';
 import PostCard from '../components/HomeComp/PostCard';
+import * as actionCreator from '../redux/Actions/ActionCreator/ResourceAction';
 
-const HomePage = () => {
+const HomePage = (props) => {
+  const { GetResourcesAction } = props;
+
   const [isDesktop, setDesktop] = useState(false);
+
   useEffect(() => {
     if (window.innerWidth > 768) {
       setDesktop(true);
     } else {
       setDesktop(false);
     }
-
     const updateMedia = () => {
       if (window.innerWidth > 768) {
         setDesktop(true);
@@ -22,6 +26,10 @@ const HomePage = () => {
     return () => window.removeEventListener('resize', updateMedia);
   }, []);
 
+  useEffect(() => {
+    GetResourcesAction();
+  }, []);
+
   return (
     <div>
       <div className="mx-auto">
@@ -29,12 +37,8 @@ const HomePage = () => {
           <div className="d-flex mx-5 my-5">
             <div className="leftcolumn">
               <h2>All Posts</h2>
-              <div className="contentcards">
-                <PostCard />
-                <PostCard />
-                <PostCard />
-                <PostCard />
-              </div>
+
+              <PostCard />
             </div>
             <div className="rightcolumn">
               <h2>Featured</h2>
@@ -68,12 +72,7 @@ const HomePage = () => {
             </ul>
             <div className="tab-content" id="myTabContent">
               <div className="tab-pane fade show active" id="Posts" role="tabpanel" aria-labelledby="Posts-tab">
-                <div className="contentcards">
-                  <PostCard />
-                  <PostCard />
-                  <PostCard />
-                  <PostCard />
-                </div>
+                <PostCard />
               </div>
               <div className="tab-pane fade" id="Featured" role="tabpanel" aria-labelledby="Featured-tab">
                 Featured
@@ -93,4 +92,10 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    GetResourcesAction: () => dispatch(actionCreator.GetResourcesAction()),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(HomePage);

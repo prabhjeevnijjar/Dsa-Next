@@ -1,40 +1,62 @@
 import getConfig from 'next/config';
 import Link from 'next/link';
+import { connect } from 'react-redux';
 const { assetPrefix = '' } = getConfig().publicRuntimeConfig;
 
-const PostCard = () => {
-  return (
-    <div className="rootclass">
-      <div className="contentcard">
-        <div className="contentcard_title">
-          <a>item</a>
-        </div>
+const PostCard = (props) => {
+  const { allResourceStore } = props;
 
-        <div className="contentcard_tags">#resourcetype</div>
-        <div className="contentcard_socials">
-          <div className="contentcard_socials_comment">
-            <img src={assetPrefix + '/static/icons/thumb-up-outline.png'} alt="comment section" />
-            <a> 12</a>
-          </div>
-          <div className="contentcard_socials_comment">
-            <img src={assetPrefix + '/static/icons/thumb-down-outline.png'} alt="comment section" />
-            <a> 11</a>
-          </div>
-          <Link href="/discussion/1234">
-            <div className="contentcard_socials_comment">
-              <img src={assetPrefix + '/static/icons/comment-outline.png'} alt="comment section" />
-              <a> 3</a>
+  return (
+    <div className="contentcards">
+      {allResourceStore?.map((data, index) => {
+        return (
+          <div className="rootclass" key={index}>
+            <div className="contentcard">
+              <div className="contentcard_title">
+                <a>{data.title}</a>
+              </div>
+              <div className="contentcard_tags">
+                {data?.resourcestudytype.map((data, index) => {
+                  return <span key={index}>#{data}&nbsp;</span>;
+                })}
+                {data?.resourcesubtype.map((data, index) => {
+                  return <span key={index}>#{data}&nbsp;</span>;
+                })}
+                #{data.resourcetype}&nbsp;
+              </div>
+              <div className="contentcard_socials">
+                <div className="contentcard_socials_comment">
+                  <img src={assetPrefix + '/static/icons/thumb-up-outline.png'} alt="comment section" />
+                  <a> {data.upvotecount}</a>
+                </div>
+                <div className="contentcard_socials_comment">
+                  <img src={assetPrefix + '/static/icons/thumb-down-outline.png'} alt="comment section" />
+                  <a> {data.downvotecount}</a>
+                </div>
+                <Link href="/discussion/1234">
+                  <div className="contentcard_socials_comment">
+                    <img src={assetPrefix + '/static/icons/comment-outline.png'} alt="comment section" />
+                    <a> {data.commentcount}</a>
+                  </div>
+                </Link>
+                <div className="contentcard_socials_comment">
+                  <img src={assetPrefix + '/static/icons/bookmark-border.png'} alt="bookmark" />
+                </div>
+              </div>
+              <br />
+              <hr />
             </div>
-          </Link>
-          <div className="contentcard_socials_comment">
-            <img src={assetPrefix + '/static/icons/bookmark-border.png'} alt="bookmark" />
           </div>
-        </div>
-        <br />
-        <hr />
-      </div>
+        );
+      })}
     </div>
   );
 };
 
-export default PostCard;
+const mapStateToProps = (state) => {
+  return {
+    allResourceStore: state.resourceInfo.allResourceStore,
+  };
+};
+
+export default connect(mapStateToProps, null)(PostCard);
