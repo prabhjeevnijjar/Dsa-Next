@@ -9,7 +9,7 @@ let store;
 
 function initStore(initialState) {
   const axiosInstance = axios.create({
-    baseURL: baseUrl || 'http://localhost:3001',
+    baseURL: baseUrl || 'https://dsa-help-platform.onrender.com',
   });
   return configureStore({
     reducer: rootReducers,
