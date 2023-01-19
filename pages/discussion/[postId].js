@@ -1,8 +1,5 @@
 import { Fragment } from 'react';
 import PostCard from '../../components/HomeComp/PostCard';
-import getConfig from 'next/config';
-
-const { assetPrefix = '' } = getConfig().publicRuntimeConfig;
 
 const DiscussionPage = () => {
   return (
@@ -11,7 +8,7 @@ const DiscussionPage = () => {
         <div className="d-flex-col my-5 mx-auto w-75">
           <div className="header">
             <div className="logo">
-              <img src={assetPrefix + '/static/icons/discussion.png'} alt="comment section" />
+              <img src={'/static/icons/discussion.png'} alt="comment section" />
             </div>
             <div className="heading">
               <h2>Thread ...</h2>
