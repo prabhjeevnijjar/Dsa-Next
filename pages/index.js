@@ -6,6 +6,9 @@ import * as actionCreator from '../redux/Actions/ActionCreator/ResourceAction';
 
 const HomePage = (props) => {
   const { GetResourcesAction } = props;
+  useEffect(() => {
+    GetResourcesAction();
+  }, []);
 
   const [isDesktop, setDesktop] = useState(false);
 
@@ -24,10 +27,6 @@ const HomePage = (props) => {
     };
     window.addEventListener('resize', updateMedia);
     return () => window.removeEventListener('resize', updateMedia);
-  }, []);
-
-  useEffect(() => {
-    GetResourcesAction();
   }, []);
 
   return (

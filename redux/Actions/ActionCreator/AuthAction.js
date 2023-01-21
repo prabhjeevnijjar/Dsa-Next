@@ -3,6 +3,7 @@ import API from '../../../config/endpoints.json';
 import * as actionType from '../ActionTypes/index';
 import Cookies from 'js-cookie';
 import Router from 'next/router';
+import jwt_decode from 'jwt-decode';
 
 export const CheckEmailAction = (payload) => async (dispatch, getState, api) => {
   dispatch(actionType.loadingSuccess({ loginLoading: true }));
@@ -49,7 +50,7 @@ export const checkTokenAction = (payload) => async (dispatch, getState, api) => 
     .post(API.checkTokenApi, {}, { headers: { 'Content-Type': 'application/json', Accept: 'application/json', Authorization: `Bearer ${payload}` } }, { method: 'get' })
     .then((res) => {
       if (res.data?.code === 200) {
-        if (res.data.status === true) dispatch(actionType.userAuthSuccess({ ...res.data.data, token: res.data.token, isLogin: true }));
+        if (res.data.status === true) dispatch(actionType.userAuthSuccess({ user: jwt_decode(res.data.data.token, { payload: true }), token: res.data.data.token, isLogin: true }));
         Cookies.set('auth-token', res.data.data.token);
       }
     })

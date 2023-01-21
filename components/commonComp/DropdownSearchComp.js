@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const DropdownSearchComp = (props) => {
-  const { data, holder } = props;
+  const { data, holder, setValue } = props;
 
   const [state, setState] = useState({ value: holder });
   const [suggestion, setSuggestion] = useState(data);
@@ -14,9 +14,10 @@ const DropdownSearchComp = (props) => {
     setSuggestion(filterSuggestions);
   };
 
-  const onClickHandler = (event) => {
-    setSuggestion(data);
-    setState({ ...state, value: event.target.innerText });
+  const onClickHandler = async (event) => {
+    await setSuggestion(data);
+    await setState({ ...state, value: event.target.value });
+    await setValue(event.target.value);
   };
 
   return (
@@ -31,7 +32,7 @@ const DropdownSearchComp = (props) => {
         <div className="scrollable-menu">
           {suggestion?.map((item, index) => {
             return (
-              <button className="dropdown-item" type="button" key={index} onClick={(e) => onClickHandler(e)}>
+              <button className="dropdown-item" type="button" key={index} value={item} onClick={(e) => onClickHandler(e)}>
                 {item}
               </button>
             );
