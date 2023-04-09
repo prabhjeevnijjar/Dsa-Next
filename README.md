@@ -1,34 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h2>Introduction</h2>
+This project aims to help developers in finding the right learning resource.      
+      
+You can sign up and add your own recomendation of a learning resource.    
 
-## Getting Started
+<h3>Functionality</h3>
+<div>
+  <ol>
+  <li>Login</li>
+  <li>SignUp</li>
+  <li>Add Resource</li>
+  <li>Upvote Resource</li>
+  <li>Downvote Resource</li>
+  <li>Add comment to a Resource</li>
+  <li>Downvote Resource</li>
+  </ol>
+</div>
+    
+---
 
-First, run the development server:
+<h2>Tech Stack</h2>
+<div>
+<h3>Frontend</h3>
+  <ol>
+    <li>NextJs</li>
+    <li>Redux</li>
+    <li>Bootstrap</li>
+  <ol>
+</div>
+<div>
+<h3>Backend</h3>
+  <ol>
+    <li>NodeJs</li>
+    <li>ExpressJs</li>
+    <li>MongoDB</li>
+  <ol>
+</div>
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h2>Deployment</h2>
