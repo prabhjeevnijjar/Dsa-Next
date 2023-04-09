@@ -1,9 +1,9 @@
 import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
+import toast from 'react-hot-toast';
 import { RESOURCE_TYPE, RESOURCE_SUB_TYPE, RESOURCE_STUDY_TYPE } from '../utils/constants';
 import DropdownSearchComp from '../components/commonComp/DropdownSearchComp';
-import * as resAction from '../redux/Actions/ActionCreator/ResourceAction';
-import toast from 'react-hot-toast';
+import * as resourceAction from '../redux/Actions/ActionCreator/ResourceAction';
 
 const NewPostPage = (props) => {
   const { userData } = props;
@@ -34,6 +34,10 @@ const NewPostPage = (props) => {
         status: 'Published',
       };
       props.PostResourcesAction(body);
+      setState({ ...state, title: '', resourceurl: '', description: '' });
+      setResType('');
+      setResSubType('');
+      setResStudyType('');
     }
   };
 
@@ -92,7 +96,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    PostResourcesAction: (payload) => dispatch(resAction.PostResourcesAction(payload)),
+    PostResourcesAction: (payload) => dispatch(resourceAction.PostResourcesAction(payload)),
   };
 };
 

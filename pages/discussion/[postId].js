@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import PostCard from '../../components/HomeComp/PostCard';
+import PostComp from '../../components/DiscussionComp/PostComp';
 
 const DiscussionPage = () => {
   return (
@@ -15,7 +15,7 @@ const DiscussionPage = () => {
             </div>
           </div>
           <div className="contentcards">
-            <PostCard />
+            <PostComp />
           </div>
           <div className="discussion">
             <div className="discussion_addnew">

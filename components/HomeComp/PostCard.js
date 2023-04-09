@@ -31,7 +31,7 @@ const PostCard = (props) => {
                   <img src={'/static/icons/thumb-down-outline.png'} alt="comment section" />
                   <a> {data.downvotecount}</a>
                 </div>
-                <Link href="/discussion/1234">
+                <Link href={`/discussion/${data._id}`}>
                   <div className="contentcard_socials_comment">
                     <img src={'/static/icons/comment-outline.png'} alt="comment section" />
                     <a> {data.commentcount}</a>
