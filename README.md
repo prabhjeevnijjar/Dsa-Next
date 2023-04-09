@@ -64,8 +64,8 @@ You can sign up and add your own recomendation of a learning resource.
             <li>List bookmarks</li>
             <li>Remove bookmark UI</li>
             <li>Bookmark category label UI</li>
-             
-      </ul>
+            <li>Custom note with bookmark</li>
+        </ul>
 </div>   
                   
               
