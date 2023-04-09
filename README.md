@@ -63,6 +63,8 @@ You can sign up and add your own recomendation of a learning resource.
             <li>Filter bookmark by month UI</li>
             <li>List bookmarks</li>
             <li>Remove bookmark UI</li>
+            <li>Bookmark category label UI</li>
+             
       </ul>
 </div>   
                   
