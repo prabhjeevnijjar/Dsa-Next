@@ -11,10 +11,8 @@ const Navbar = (props) => {
   return (
     <Fragment>
       <nav className="navbar navbar-dark bg-dark navbar-expand-md justify-content-between">
-        <Link className="no_link_style" href="/">
-          <a className="navbar-brand" href="#">
-            Tech Resources
-          </a>
+        <Link className="no_link_style avbar-brand" href="/">
+          Tech Resources
         </Link>
         <div className="d-flex flex-column justify-content-end">
           {!userInfoStore.isLogin ? (
@@ -72,9 +70,7 @@ const Navbar = (props) => {
                     data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent"
                   >
-                    <Link href="/enter">
-                      <a>Log In</a>
-                    </Link>
+                    <Link href="/enter">Log In</Link>
                   </button>
                   <button
                     className="nav-item active btn btn-outline-success my-2 my-sm-0 no_link_style"
@@ -95,10 +91,8 @@ const Navbar = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    userInfoStore: state.authInfo.userInfoStore,
-  };
-};
+const mapStateToProps = (state) => ({
+  userInfoStore: state.authInfo.userInfoStore,
+});
 
 export default connect(mapStateToProps, null)(Navbar);

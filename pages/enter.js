@@ -9,12 +9,7 @@ const EnterPage = (props) => {
   const { checkLoginStore, CheckEmailAction, authStepSuccess, CheckRegisterAction, LoginAction } = props;
   const [state, setState] = useState({ fname: '', lname: '', email: '', password: '', cpassword: '' });
 
-  const onChangeHandler = (event) => {
-    if (checkInputHandler(event)) {
-      setState({ ...state, [event.target.name]: event.target.value });
-    }
-  };
-
+  const onChangeHandler = (event) => (checkInputHandler(event) ? setState({ ...state, [event.target.name]: event.target.value }) : '');
   const submitCheckEmail = () => {
     if (
       !state.email ||
@@ -22,47 +17,29 @@ const EnterPage = (props) => {
       !state.email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
     ) {
       toast.error('Enter valid email');
-    } else {
-      CheckEmailAction({ email: state.email });
-    }
+    } else CheckEmailAction({ email: state.email });
   };
 
   const loginSubmmitHandler = () => {
     if (!state.email || !state.password) {
       toast.error('Please Enter Credentials !');
     } else {
-      const data = {
-        email: state.email,
-        password: state.password,
-      };
+      const data = { email: state.email, password: state.password };
       LoginAction(data);
       setState({ ...state, password: '' });
     }
   };
 
   const submitSignUp = () => {
-    if (!state.fname) {
-      toast.error('Enter valid First Name');
-    } else if (!state.lname) {
-      toast.error('Enter valid Last Name');
-    } else if (!state.password || !state.cpassword || state.password !== state.cpassword) {
-      toast.error('Confirmed password does not match');
-    } else {
-      const data = {
-        FirstName: state.fname,
-        LastName: state.lname,
-        Email: state.email,
-        Password: state.password,
-        PasswordConfirmation: state.cpassword,
-      };
+    if (!state.fname) toast.error('Enter valid First Name');
+    else if (!state.lname) toast.error('Enter valid Last Name');
+    else if (!state.password || !state.cpassword || state.password !== state.cpassword) toast.error('Confirmed password does not match');
+    else {
+      const data = { FirstName: state.fname, LastName: state.lname, Email: state.email, Password: state.password, PasswordConfirmation: state.cpassword };
       CheckRegisterAction(data);
       setState({ ...state, fname: '', lname: '', password: '', cpassword: '' });
     }
   };
-
-  // useEffect(() => {
-  //   checkLoginStore.onStep = 1;
-  // });
 
   return (
     <Fragment>
@@ -102,7 +79,6 @@ const EnterPage = (props) => {
               <h1>Login</h1>
               <a>Don&apos;t have an account? </a>
               <a
-                href="#"
                 onClick={() => {
                   authStepSuccess({ onStep: 1 });
                 }}
