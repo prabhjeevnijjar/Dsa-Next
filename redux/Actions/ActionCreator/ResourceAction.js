@@ -1,7 +1,6 @@
 import Cookies from 'js-cookie';
 import toast from 'react-hot-toast';
 import Router from 'next/router';
-
 import API from '../../../config/endpoints.json';
 import * as actionType from '../ActionTypes/index';
 
@@ -11,6 +10,7 @@ export const GetResourcesAction = (payload) => async (dispatch, getState, api) =
     .get(API.getAllResourcesApi, payload)
     .then((res) => {
       if (res.data.code === 200) {
+        console.log('------', res.data);
         if (res.data.status === true) {
           dispatch(actionType.getAllResources(res.data?.data));
         }
@@ -21,7 +21,7 @@ export const GetResourcesAction = (payload) => async (dispatch, getState, api) =
         dispatch(actionType.authStepSuccess({ onStep: 3 }));
       }
     })
-    .catch();
+    .catch(() => {});
 };
 
 export const PostResourcesAction = (payload) => async (dispatch, getState, api) => {

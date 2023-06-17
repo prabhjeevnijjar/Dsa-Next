@@ -139,7 +139,10 @@
     border-radius: 6px;
   }
   .contentcard_socials_comment img{
-    width:28px;
+    width:20px;
+  }
+  .width-25 {
+    width: 25px;
   }
   .contentcard_socials_comment:hover{
   cursor: pointer;
@@ -319,4 +322,12 @@ width: 50%;;
     border-radius: 6px;
     color: #747474;
     font-size: 14px;
+  }
+  .card {
+    /* height: 250px; */
+    padding: 15px;
+  }
+  .card--user {
+    height: 50px;
+    color: #000000;
   }

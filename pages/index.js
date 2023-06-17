@@ -32,7 +32,8 @@ const HomePage = (props) => {
         {isDesktop ? (
           <div className="d-flex mx-5 my-5">
             <div className="leftcolumn">
-              <h2>All Posts</h2>
+              <h2>My feed</h2>
+
               <PostListing />
             </div>
             <div className="rightcolumn">
