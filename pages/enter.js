@@ -10,13 +10,14 @@ const EnterPage = (props) => {
   const [state, setState] = useState({ fname: '', lname: '', email: '', password: '', cpassword: '' });
 
   const onChangeHandler = (event) => (checkInputHandler(event) ? setState({ ...state, [event.target.name]: event.target.value }) : '');
+  const onClearHandler = () => setState({ ...state, fname: '', lname: '', email: '', password: '', cpassword: '' });
   const submitCheckEmail = () => {
     if (
       !state.email ||
       // eslint-disable-next-line no-useless-escape
       !state.email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
     ) {
-      toast.error('Enter valid email');
+      toast.error('Use a valid email');
     } else CheckEmailAction({ email: state.email });
   };
 
@@ -40,7 +41,7 @@ const EnterPage = (props) => {
       setState({ ...state, fname: '', lname: '', password: '', cpassword: '' });
     }
   };
-
+  console.log('STREP::::', checkLoginStore.onStep);
   return (
     <Fragment>
       {checkLoginStore.onStep === 1 ? (
@@ -78,13 +79,15 @@ const EnterPage = (props) => {
             <div className="heading">
               <h1>Login</h1>
               <a>Don&apos;t have an account? </a>
-              <a
+              <span
+                className="text-success cursor-pointer"
                 onClick={() => {
                   authStepSuccess({ onStep: 1 });
+                  onClearHandler();
                 }}
               >
-                Sign up
-              </a>
+                Create Account
+              </span>
             </div>
             <br />
             <br />
@@ -107,15 +110,16 @@ const EnterPage = (props) => {
           <div className="signupbase">
             <div className="heading">
               <h1>Sign Up</h1>
-              <a>Have an account? </a>
-              <a
-                href="#"
+              <span>Have an account? </span>
+              <span
+                className="text-success cursor-pointer"
                 onClick={() => {
                   authStepSuccess({ onStep: 2 });
+                  onClearHandler();
                 }}
               >
                 Sign In
-              </a>
+              </span>
             </div>
             <br />
             <br />

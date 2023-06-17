@@ -11,17 +11,15 @@ export const CheckEmailAction = (payload) => async (dispatch, getState, api) => 
     .post(API.checkEmail, payload)
     .then((res) => {
       if (res.data.code === 200) {
-        if (res.data.status === true) {
-          dispatch(actionType.authStepSuccess({ onStep: 2 }));
-        }
+        if (res.data.status === true) dispatch(actionType.authStepSuccess({ onStep: 2 }));
         dispatch(actionType.loadingSuccess({ loginLoading: false }));
       } else {
-        toast.success('Please Register here !');
+        toast.success('Create a new account !');
         dispatch(actionType.loadingSuccess({ loginLoading: false }));
         dispatch(actionType.authStepSuccess({ onStep: 3 }));
       }
     })
-    .catch();
+    .catch(() => {});
 };
 
 export const LoginAction = (payload) => async (dispatch, getState, api) => {
@@ -30,10 +28,9 @@ export const LoginAction = (payload) => async (dispatch, getState, api) => {
     .post(API.loginApi, payload)
     .then((res) => {
       if (res.data.code === 200) {
-        if (res.data.status === true) {
-          Cookies.set('dsa-token', res.data.data.token);
-          Router.push('/');
-        }
+        console.log('i ama hewre');
+        dispatch(checkTokenAction(res.data.data.token));
+
         dispatch(actionType.loadingSuccess({ loginLoading: false }));
       } else {
         toast.error(res.data.message || 'invalid passs');
@@ -46,12 +43,16 @@ export const LoginAction = (payload) => async (dispatch, getState, api) => {
 };
 
 export const checkTokenAction = (payload) => async (dispatch, getState, api) => {
+  console.log({ payload });
   return api
     .post(API.checkTokenApi, {}, { headers: { 'Content-Type': 'application/json', Accept: 'application/json', Authorization: `Bearer ${payload}` } }, { method: 'get' })
     .then((res) => {
       if (res.data?.code === 200) {
-        if (res.data.status === true) dispatch(actionType.userAuthSuccess({ user: jwt_decode(res.data.data.token, { payload: true }), token: res.data.data.token, isLogin: true }));
-        Cookies.set('auth-token', res.data.data.token);
+        if (res.data.status === true) {
+          dispatch(actionType.userAuthSuccess({ user: jwt_decode(res.data.data.token, { payload: true }), token: res.data.data.token, isLogin: true }));
+          Cookies.set('auth-token', res.data.data.token);
+          Router.push('/');
+        }
       }
     })
     .catch(() => {
@@ -70,10 +71,10 @@ export const CheckRegisterAction = (payload) => async (dispatch, getState, api) 
         dispatch(LoginAction({ email: payload.Email, password: payload.Password }));
         dispatch(actionType.loadingSuccess({ loginLoading: false }));
       } else {
-        toast.sucess('Please Register');
+        toast.sucess('Set up a new Account');
         dispatch(actionType.loadingSuccess({ loginLoading: false }));
         dispatch(actionType.authStepSuccess({ onStep: 3 }));
       }
     })
-    .catch();
+    .catch(() => {});
 };

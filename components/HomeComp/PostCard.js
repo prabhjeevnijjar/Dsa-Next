@@ -25,16 +25,16 @@ const PostCard = (props) => {
               <div className="contentcard_socials">
                 <div className="contentcard_socials_comment">
                   <img src={'/static/icons/thumb-up-outline.png'} alt="comment section" />
-                  <a> {data.upvotecount}</a>
+                  <span> {data.upvotecount}</span>
                 </div>
                 <div className="contentcard_socials_comment">
                   <img src={'/static/icons/thumb-down-outline.png'} alt="comment section" />
-                  <a> {data.downvotecount}</a>
+                  <span>{data.downvotecount}</span>
                 </div>
                 <Link href={`/discussion/${data._id}`}>
                   <div className="contentcard_socials_comment">
                     <img src={'/static/icons/comment-outline.png'} alt="comment section" />
-                    <a> {data.commentcount}</a>
+                    <span>{data.commentcount}</span>
                   </div>
                 </Link>
                 <div className="contentcard_socials_comment">

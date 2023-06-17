@@ -11,10 +11,8 @@ const Layout = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    userInfoStore: state.authInfo.userInfoStore,
-  };
-};
+const mapStateToProps = (state) => ({
+  userInfoStore: state.authInfo.userInfoStore,
+});
 
 export default connect(mapStateToProps, null)(Layout);
