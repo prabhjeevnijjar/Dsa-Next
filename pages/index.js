@@ -1,43 +1,39 @@
 import { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import AddFab from '../common/Headers.js/AddFab';
-import PostCard from '../components/HomeComp/PostCard';
+import PostListing from '../components/HomeComp/PostListing/PostListing';
 import * as actionCreator from '../redux/Actions/ActionCreator/ResourceAction';
 
 const HomePage = (props) => {
   const { GetResourcesAction } = props;
-  useEffect(() => {
-    GetResourcesAction();
-  }, []);
 
   const [isDesktop, setDesktop] = useState(false);
 
   useEffect(() => {
-    if (window.innerWidth > 768) {
-      setDesktop(true);
-    } else {
-      setDesktop(false);
-    }
+    if (window.innerWidth > 768) setDesktop(true);
+    else setDesktop(false);
+
     const updateMedia = () => {
-      if (window.innerWidth > 768) {
-        setDesktop(true);
-      } else {
-        setDesktop(false);
-      }
+      if (window.innerWidth > 768) setDesktop(true);
+      else setDesktop(false);
     };
+
     window.addEventListener('resize', updateMedia);
     return () => window.removeEventListener('resize', updateMedia);
   }, []);
 
+  useEffect(() => {
+    GetResourcesAction();
+  }, []);
+
   return (
-    <div>
+    <Fragment>
       <div className="mx-auto">
         {isDesktop ? (
           <div className="d-flex mx-5 my-5">
             <div className="leftcolumn">
               <h2>All Posts</h2>
-
-              <PostCard />
+              <PostListing />
             </div>
             <div className="rightcolumn">
               <h2>Featured</h2>
@@ -71,7 +67,7 @@ const HomePage = (props) => {
             </ul>
             <div className="tab-content" id="myTabContent">
               <div className="tab-pane fade show active" id="Posts" role="tabpanel" aria-labelledby="Posts-tab">
-                <PostCard />
+                <PostListing />
               </div>
               <div className="tab-pane fade" id="Featured" role="tabpanel" aria-labelledby="Featured-tab">
                 Featured
@@ -87,14 +83,10 @@ const HomePage = (props) => {
           </Fragment>
         )}
       </div>
-    </div>
+    </Fragment>
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    GetResourcesAction: () => dispatch(actionCreator.GetResourcesAction()),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({ GetResourcesAction: () => dispatch(actionCreator.GetResourcesAction()) });
 
 export default connect(null, mapDispatchToProps)(HomePage);
