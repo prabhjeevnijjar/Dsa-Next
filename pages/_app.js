@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import { Provider } from 'react-redux';
 import { useStore } from '../redux/Store';
 import '../public/static/css/styles.css';
+import { Analytics } from '@vercel/analytics/react';
 
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps?.reduxState);
@@ -18,6 +19,7 @@ function MyApp({ Component, pageProps }) {
       <Provider store={store}>
         <Layout>
           <Component {...pageProps} />
+          <Analytics />
         </Layout>
       </Provider>
     </Fragment>
