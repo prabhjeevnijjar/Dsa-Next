@@ -1,12 +1,10 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
-import Cookies from 'js-cookie';
-import { useRouter } from 'next/router';
+import * as authActionCreator from '../../redux/Actions/ActionCreator/AuthAction';
 
 const Navbar = (props) => {
   const { userInfoStore } = props;
-  const router = useRouter();
   console.log({ userInfoStore });
   return (
     <Fragment>
@@ -43,17 +41,7 @@ const Navbar = (props) => {
                   <Link href="/my-bookmarks">Bookmarks</Link>
                 </button>
                 <div className="dropdown-divider"></div>
-                <button
-                  className="dropdown-item"
-                  type="button"
-                  onClick={() => {
-                    if (Cookies.get('auth-token') && Cookies.get('dsa-token')) {
-                      Cookies.remove('auth-token');
-                      Cookies.remove('dsa-token');
-                    }
-                    router.reload();
-                  }}
-                >
+                <button className="dropdown-item" type="button" onClick={() => props.logoutAction()}>
                   Sign Out
                 </button>
               </div>
@@ -63,25 +51,9 @@ const Navbar = (props) => {
             <ul className="navbar-nav mr-auto">
               {!userInfoStore.isLogin ? (
                 <Fragment>
-                  <Link
-                    href="/enter"
-                    className=" nav-item active btn btn-outline-secondary mr-3 no_link_style"
-                    data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                  >
-                    Log In
+                  <Link href="/enter" className="nav-item btn btn-outline-success my-2 my-sm-0 no_link_style">
+                    Sign In
                   </Link>
-
-                  <button
-                    className="nav-item active btn btn-outline-success my-2 my-sm-0 no_link_style"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                  >
-                    <Link href="/enter">Create Account</Link>
-                  </button>
                 </Fragment>
               ) : null}
             </ul>
@@ -94,4 +66,6 @@ const Navbar = (props) => {
 
 const mapStateToProps = (state) => ({ userInfoStore: state.authInfo.userInfoStore });
 
-export default connect(mapStateToProps, null)(Navbar);
+const mapDispatchToProps = (dispatch) => ({ logoutAction: (payload) => dispatch(authActionCreator.logoutAction(payload)) });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

@@ -10,7 +10,6 @@ export const GetResourcesAction = (payload) => async (dispatch, getState, api) =
     .get(API.getAllResourcesApi, payload)
     .then((res) => {
       if (res.data.code === 200) {
-        console.log('------', res.data);
         if (res.data.status === true) {
           dispatch(actionType.getAllResources(res.data?.data));
         }

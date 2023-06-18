@@ -4,7 +4,7 @@ const PostCard = (props) => {
   const { data } = props;
   return (
     <Fragment>
-      <div className="card col-11 my-1 ">
+      <div className="card col-11 my-2 ">
         <div className="card--user row">
           <div className="col-9">
             <label className="btn-circle btn-sm btn-secondary" type="button">
@@ -23,9 +23,7 @@ const PostCard = (props) => {
 
         {data.title ? (
           <div className="row-12">
-            <div className="row-12">
-              <b>{data.title}</b>
-            </div>
+            <b>{data.title}</b>
           </div>
         ) : null}
         <div className="row-12">
@@ -44,7 +42,7 @@ const PostCard = (props) => {
         <div className="row-12 text-primary fs-10">
           <div className="row">
             <div className="col-5">
-              <span>Show replies({data.commentcount})</span>
+              <span className="cursor-pointer">Show replies({data.commentcount})</span>
             </div>
             <div className="col-5">
               <div className="row">

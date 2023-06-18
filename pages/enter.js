@@ -41,7 +41,7 @@ const EnterPage = (props) => {
       setState({ ...state, fname: '', lname: '', password: '', cpassword: '' });
     }
   };
-  console.log('STREP::::', checkLoginStore.onStep);
+
   return (
     <Fragment>
       {checkLoginStore.onStep === 1 ? (

@@ -5,12 +5,12 @@ import PostCardLoader from '../Loaders/PostCardLoader';
 
 const PostListing = (props) => {
   const { allResourceStore } = props;
-  console.log({ allResourceStore });
+
   return (
-    <div className="row">
+    <div className="row-12">
       {allResourceStore?.length ? (
         <>
-          {allResourceStore?.map((data, index) => {
+          {[...allResourceStore]?.reverse()?.map((data, index) => {
             return <PostCard key={index} data={data} />;
           })}
         </>
