@@ -1,14 +1,24 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import PostCard from './PostCard';
+import PostCardLoader from '../Loaders/PostCardLoader';
 
 const PostListing = (props) => {
   const { allResourceStore } = props;
   console.log({ allResourceStore });
   return (
     <div className="row">
-      {allResourceStore?.map((data, index) => {
-        return <PostCard key={index} data={data} />;
-      })}
+      {allResourceStore?.length ? (
+        <>
+          {allResourceStore?.map((data, index) => {
+            return <PostCard key={index} data={data} />;
+          })}
+        </>
+      ) : (
+        [0, 1, 2].map((item, index) => {
+          return <PostCardLoader key={index} />;
+        })
+      )}
     </div>
   );
 };
