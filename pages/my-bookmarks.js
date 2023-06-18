@@ -1,9 +1,15 @@
-import { Fragment } from 'react';
-
+import { Fragment, useEffect } from 'react';
 import Search from '../components/BookmarkComp/Search';
 import Bookmarks from '../components/BookmarkComp/Bookmarks';
+import { connect } from 'react-redux';
+import * as bookmarkActionCreator from '../redux/Actions/ActionCreator/BookmarkAction';
+const MyBookmarksPage = (props) => {
+  const { allBookmarkStore } = props;
+  console.log({ allBookmarkStore });
 
-const MyBookmarksPage = () => {
+  useEffect(() => {
+    props.GetBookmarksAction();
+  }, []);
   return (
     <Fragment>
       <div className="bookmarks_container d-flex my-5">
@@ -12,7 +18,11 @@ const MyBookmarksPage = () => {
         </div>
         <div className="rightSection d-block px-5">
           <Search />
-          <Bookmarks />
+          <div className="rightSection_bookmarks mt-5">
+            {allBookmarkStore?.map((data, index) => {
+              return <Bookmarks data={data} key={index} />;
+            })}
+          </div>
           <div className="container mt-5 d-flex justify-content-center">
             <button className="rightSection_loadmore px-3">Load More</button>
           </div>
@@ -22,4 +32,7 @@ const MyBookmarksPage = () => {
   );
 };
 
-export default MyBookmarksPage;
+const mapStateToProps = (state) => ({ allBookmarkStore: state.bookmarksInfo.allBookmarkStore });
+const mapDispatchToProps = (dispatch) => ({ GetBookmarksAction: (payload) => dispatch(bookmarkActionCreator.GetBookmarksAction(payload)) });
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyBookmarksPage);

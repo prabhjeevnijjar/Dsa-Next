@@ -7,3 +7,7 @@ export const LOADING_SUCCESS = 'LOADING_SUCCESS';
 // ------ RESOURCE ------
 
 export const GET_ALL_RESOURCES = 'GET_ALL_RESOURCES';
+
+// ------ BOOKMARKS ------
+
+export const GET_ALL_BOOKMARKS = 'GET_ALL_BOOKMARKS';

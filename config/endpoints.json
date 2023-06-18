@@ -3,7 +3,7 @@
   "loginApi": "/api/login",
   "checkTokenApi": "/api/check-token",
   "registerApi": "/api/register",
-
+  "getBookmarksApi": "/homepage/bookmark",
   "getAllResourcesApi": "/homepage/resource",
   "postResourceApi": "/homepage/resource"
 }

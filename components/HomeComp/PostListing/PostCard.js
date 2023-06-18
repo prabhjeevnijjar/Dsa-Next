@@ -2,6 +2,12 @@ import { Fragment } from 'react';
 
 const PostCard = (props) => {
   const { data } = props;
+  console.log(data);
+
+  const addBookmarkHandler = (id) => {
+    console.log({ id });
+  };
+
   return (
     <Fragment>
       <div className="card col-11 my-2 ">
@@ -16,7 +22,7 @@ const PostCard = (props) => {
             <span className="text-secondary mx-1">{Math.ceil((Date.now() - data.postedDate) / (1000 * 60 * 60 * 24))}d</span>
           </div>
           <div className="col-3 cursor-pointer text-right">
-            <img className="width-25" src={'/static/icons/bookmark-border.png'} alt="bookmark" />
+            <img className="width-25" src={'/static/icons/bookmark-border.png'} alt="bookmark" onClick={() => addBookmarkHandler(data._id)} />
           </div>
         </div>
         <br></br>
