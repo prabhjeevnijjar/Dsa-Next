@@ -37,6 +37,6 @@ app.prepare().then(() => {
 
   app.listen(3002, (err) => {
     if (err) throw err;
-    console.log(' Server is up and running on port: ' + 3002);
+    console.log('Dev Resources Server is up and running on port: ' + 3002);
   });
 });
