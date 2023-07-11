@@ -23,8 +23,17 @@ const RESOURCE_SUB_TYPE = [
 
 const RESOURCE_STUDY_TYPE = ['Text', 'Video', 'Course', 'ChatGroup'];
 
+const PROFILE_LIST_TYPE = {
+  me: 'me',
+  posts: 'posts',
+  likes: 'likes',
+  comments: 'comments',
+  bookmarks: 'bookmarks',
+};
+
 module.exports = {
   RESOURCE_TYPE,
   RESOURCE_SUB_TYPE,
   RESOURCE_STUDY_TYPE,
+  PROFILE_LIST_TYPE,
 };
