@@ -9,8 +9,8 @@ const Navbar = (props) => {
   return (
     <Fragment>
       <nav className="navbar navbar-dark bg-dark navbar-expand-md justify-content-between">
-        <Link className="no_link_style avbar-brand" href="/">
-          <span>Tech Resources</span>
+        <Link className="navbar-brand" href="/">
+          DEV RESOURCES
         </Link>
         <div className="d-flex flex-column justify-content-end">
           {!userInfoStore.isLogin ? (
