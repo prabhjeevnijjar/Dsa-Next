@@ -1,4 +1,20 @@
+import { useEffect, useState } from 'react';
+import { profilePostsCallHandler } from '../../utils/API';
+
 const ListPosts = () => {
+  const [data, setData] = useState([]);
+
+  const fun = async () => {
+    const postData = await profilePostsCallHandler().then((dat) => {
+      console.log({ dat });
+    });
+    console.log({ postData });
+  };
+
+  useEffect(() => {
+    fun();
+  }, []);
+  console.log({ data });
   return (
     <section className="p-2">
       <div className="my-3 text-right">

@@ -10,6 +10,7 @@ import ListBookmarks from '../components/ProfileComp/ListBookmarks';
 
 const MyProfilePage = () => {
   const [selectedSection, setSelectedSection] = useState(PROFILE_LIST_TYPE.me);
+
   return (
     <Fragment>
       <section className="profile-solid_color_bar"></section>

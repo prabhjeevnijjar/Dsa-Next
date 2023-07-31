@@ -3,6 +3,8 @@
   "loginApi": "/api/login",
   "checkTokenApi": "/api/check-token",
   "registerApi": "/api/register",
+  "myPostsApi": "/profile/my-posts",
+
   "getBookmarksApi": "/homepage/bookmark",
   "getAllResourcesApi": "/homepage/resource",
   "postResourceApi": "/homepage/resource"

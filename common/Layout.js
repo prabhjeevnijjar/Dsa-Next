@@ -6,7 +6,6 @@ import * as authActionCreator from '../redux/Actions/ActionCreator/AuthAction';
 
 const Layout = (props) => {
   useEffect(() => {
-    console.log(Cookies.get('dsa-token'));
     if (Cookies.get('dsa-token')) props.checkTokenAction(Cookies.get('dsa-token'));
   }, []);
 

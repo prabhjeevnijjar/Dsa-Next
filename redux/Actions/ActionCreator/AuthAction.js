@@ -49,7 +49,6 @@ export const checkTokenAction = (payload) => async (dispatch, getState, api) => 
       if (res.data?.code === 200) {
         if (res.data.status === true) {
           const userInfo = jwt_decode(res.data.data.token, { payload: true });
-          console.log({ userInfo });
           dispatch(actionType.userAuthSuccess({ user: userInfo, isLogin: true }));
           Cookies.set('auth-token', res.data.data.token);
         }
