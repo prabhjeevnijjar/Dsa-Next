@@ -191,6 +191,18 @@
     height: 120px;
     background-color: blueviolet;
   }
+  .profile-profile_image--name {
+    font-size: 30px;
+    position: relative;
+    top: 26px;
+    left: 16px;
+  }
+  .profile-profile_image--edit {
+    position: relative;
+    width: 27px;
+    top: 50px;
+    left: 50px;
+  }
   .profile-profile_division {
     height: 100vh;
   }
