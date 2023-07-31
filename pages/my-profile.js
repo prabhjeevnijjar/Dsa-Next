@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
 import EditProfileImage from '../components/ProfileComp/EditProfileImage';
 import ListSection from '../components/ProfileComp/ListSection';
 import { PROFILE_LIST_TYPE } from '../utils/constants';
@@ -7,12 +8,14 @@ import ListPosts from '../components/ProfileComp/ListPosts';
 import ListLikes from '../components/ProfileComp/ListLikes';
 import ListComments from '../components/ProfileComp/ListComments';
 import ListBookmarks from '../components/ProfileComp/ListBookmarks';
-import { connect } from 'react-redux';
+import { useProfileCallHandler } from '../hoc/profileCallHandler';
 
 const MyProfilePage = (props) => {
   const { userInfoStore } = props;
   const [selectedSection, setSelectedSection] = useState(PROFILE_LIST_TYPE.me);
-  console.log({ userInfoStore });
+  const { postData } = useProfileCallHandler(selectedSection);
+
+  console.log({ postData });
   return (
     <Fragment>
       <section className="profile-solid_color_bar"></section>
@@ -35,13 +38,13 @@ const MyProfilePage = (props) => {
           {selectedSection === PROFILE_LIST_TYPE.me ? (
             <ListMe userData={userInfoStore} />
           ) : selectedSection === PROFILE_LIST_TYPE.posts ? (
-            <ListPosts />
+            <ListPosts postData={postData} />
           ) : selectedSection === PROFILE_LIST_TYPE.likes ? (
-            <ListLikes />
+            <ListLikes postData={postData} />
           ) : selectedSection === PROFILE_LIST_TYPE.comments ? (
-            <ListComments />
+            <ListComments postData={postData} />
           ) : selectedSection === PROFILE_LIST_TYPE.bookmarks ? (
-            <ListBookmarks />
+            <ListBookmarks postData={postData} />
           ) : null}
         </div>
       </section>

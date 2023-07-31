@@ -1,4 +1,8 @@
-const ListBookmarks = () => {
+import { milliToDate } from '../../utils/GlobalFunctions';
+
+const ListBookmarks = (props) => {
+  const { postData } = props;
+
   return (
     <section className="p-2">
       <div className="my-3 text-right">
@@ -25,22 +29,26 @@ const ListBookmarks = () => {
           </div>
         </div>
       </div>
-      {[0, 0, 0, 0].map((item, index) => {
-        return (
-          <div className="profile-profile_division-right-post bg-white mt-3 cursor-pointer" key={index}>
-            <div className="profile-profile_division-right-post--content">
-              <div className="fs-10">12 March 2023</div>
-              <div className="font-weight-bold">This is a heading</div>
-              <div>This is a descriptin for heading</div>
-            </div>
-            <div className="profile-profile_division-right-post--actions">
-              <div className="contentcard_socials_comment">
-                <img src={'/static/icons/bookmark-filled.png'} alt="comment section" />
+      {postData?.length ? (
+        <>
+          {postData?.map((item, index) => {
+            return (
+              <div className="profile-profile_division-right-post bg-white mt-3 cursor-pointer" key={index}>
+                <div className="profile-profile_division-right-post--content">
+                  <div className="fs-10">{item.postedDate ? milliToDate(item.postedDate) : ''}</div>
+                  <div className="font-weight-bold">{item.resourceData[0].title}</div>
+                  <div>{item.resourceData[0].description}</div>
+                </div>
+                <div className="profile-profile_division-right-post--actions">
+                  <div className="contentcard_socials_comment">
+                    <img src={'/static/icons/bookmark-filled.png'} alt="comment section" />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        );
-      })}
+            );
+          })}
+        </>
+      ) : null}
     </section>
   );
 };

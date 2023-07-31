@@ -5,12 +5,11 @@ import { toast } from 'react-hot-toast';
 const ListMe = (props) => {
   const { userData } = props;
   const [state, setState] = useState({ firstname: '', lastname: '' });
+
   const onChangeHandler = (e) => {
-    if (checkInputHandler(e)) {
-      setState({ ...state, [e.target.name]: e.target.value });
-    }
+    if (checkInputHandler(e)) setState({ ...state, [e.target.name]: e.target.value });
   };
-  console.log({ state });
+
   const onSubmitHandler = () => {
     if (state.firstname?.length <= 2) toast.error('Invalid First name');
     else if (state.lastname?.length <= 2) toast.error('Invalid Last name');
@@ -34,7 +33,7 @@ const ListMe = (props) => {
             type="text"
             name="firstname"
             value={state.firstname || ''}
-            placeholder={userData?.user?.first_name}
+            placeholder={userData?.user?.first_name || ''}
             onChange={(e) => onChangeHandler(e)}
           />
         </div>
@@ -42,7 +41,15 @@ const ListMe = (props) => {
           <label className="small mb-1" htmlFor="inputLastName">
             Last name
           </label>
-          <input className="form-control" id="inputLastName" type="text" name="lastname" value={state.lastname || ''} placeholder={userData?.user?.last_name} onChange={(e) => onChangeHandler(e)} />
+          <input
+            className="form-control"
+            id="inputLastName"
+            type="text"
+            name="lastname"
+            value={state.lastname || ''}
+            placeholder={userData?.user?.last_name || ''}
+            onChange={(e) => onChangeHandler(e)}
+          />
         </div>
       </div>
 
