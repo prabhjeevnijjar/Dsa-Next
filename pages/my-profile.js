@@ -15,7 +15,6 @@ const MyProfilePage = (props) => {
   const [selectedSection, setSelectedSection] = useState(PROFILE_LIST_TYPE.me);
   const { postData } = useProfileCallHandler(selectedSection);
 
-  console.log({ postData });
   return (
     <Fragment>
       <section className="profile-solid_color_bar"></section>

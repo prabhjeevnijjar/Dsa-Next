@@ -22,6 +22,7 @@
   }
   body {
     font-family: 'Poppins', sans-serif;
+    background-color: #f3f3f3;
   }
   .no_link_style a{
     color: white;
@@ -60,6 +61,13 @@
  .searchbar_date {
   font-size: 12px;
  }
+.trending-card {
+  min-height: 140px;
+  background-color: white;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+}
   /* signup */
   .signupbase{
     width: 100%;
@@ -117,7 +125,7 @@
     padding: 6px 10px 0px 10px;
   }
   .contentcard_title{
-    font-size: 24px;
+    font-size: 34px;
     text-align: center;
   }
   .contentcard_tags{
@@ -374,13 +382,15 @@
     height: 40px;
     width: 130px;
     border: none;
-    border-radius: 6px;
+    border-radius: 12px;
     color: #747474;
     font-size: 14px;
   }
   .card {
     /* height: 250px; */
     padding: 15px;
+    border: none;
+    border-radius: 10px;
   }
   .card--user {
     height: 50px;

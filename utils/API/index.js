@@ -19,7 +19,6 @@ const bookmarksCallHandler = async () => {
 };
 
 const profilePostsCallHandler = async (endpoint) => {
-  console.log({ endpoint });
   if (endpoint) {
     try {
       const token = await Cookies.get('auth-token');

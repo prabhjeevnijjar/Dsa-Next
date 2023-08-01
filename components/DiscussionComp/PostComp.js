@@ -1,34 +1,34 @@
 const PostComp = (props) => {
-  const data = {};
+  const { resData } = props;
   return (
     <>
       <div className="contentcards">
         <div className="rootclass" key={1}>
           <div className="contentcard">
             <div className="contentcard_title">
-              <a>{data.title}</a>
+              <a>{resData.data[0].title}</a>
             </div>
             <div className="contentcard_tags">
-              {data?.resourcestudytype?.map((data, index) => {
+              {resData.data[0]?.resourcestudytype?.map((data, index) => {
                 return <span key={index}>#{data}&nbsp;</span>;
               })}
-              {data?.resourcesubtype?.map((data, index) => {
+              {resData.data[0]?.resourcesubtype?.map((data, index) => {
                 return <span key={index}>#{data}&nbsp;</span>;
               })}
-              #{data.resourcetype}&nbsp;
+              #{resData.data[0].resourcetype}&nbsp;
             </div>
             <div className="contentcard_socials">
               <div className="contentcard_socials_comment">
                 <img src={'/static/icons/thumb-up-outline.png'} alt="comment section" />
-                <a> {data.upvotecount}</a>
+                <a> {resData.data[0].upvotecount}</a>
               </div>
               <div className="contentcard_socials_comment">
                 <img src={'/static/icons/thumb-down-outline.png'} alt="comment section" />
-                <a> {data.downvotecount}</a>
+                <a> {resData.data[0].downvotecount}</a>
               </div>
               <div className="contentcard_socials_comment">
                 <img src={'/static/icons/comment-outline.png'} alt="comment section" />
-                <a> {data.commentcount}</a>
+                <a> {resData.data[0].commentcount}</a>
               </div>
 
               <div className="contentcard_socials_comment">

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { milliToDate } from '../../utils/GlobalFunctions';
 
 const ListPosts = (props) => {
@@ -32,24 +33,26 @@ const ListPosts = (props) => {
         <>
           {postData.map((item, index) => {
             return (
-              <div className="profile-profile_division-right-post bg-white mt-3 cursor-pointer" key={index}>
-                <div className="profile-profile_division-right-post--content">
-                  <div className="fs-10">{milliToDate(item.postedDate)}</div>
-                  <div className="font-weight-bold">{item.title}</div>
-                  <div>{item.description}</div>
+              <Link href={'/discussion/postId'} as={`/discussion/${item._id}`} style={{ color: 'inherit', textDecoration: 'none' }} key={index}>
+                <div className="profile-profile_division-right-post bg-white mt-3 cursor-pointer">
+                  <div className="profile-profile_division-right-post--content">
+                    <div className="fs-10">{milliToDate(item.postedDate)}</div>
+                    <div className="font-weight-bold">{item.title}</div>
+                    <div>{item.description}</div>
+                  </div>
+                  <div className="profile-profile_division-right-post--actions">
+                    <div className="contentcard_socials_comment">
+                      <span className="text-muted">{item.upvotecount}</span> <img src={'/static/icons/thumb-up-outline.png'} alt="comment section" />
+                    </div>
+                    <div className="contentcard_socials_comment">
+                      <span className="text-muted">{item.downvotecount}</span> <img src={'/static/icons/thumb-down-outline.png'} alt="comment section" />
+                    </div>
+                    <div className="contentcard_socials_comment">
+                      <span className="text-muted">{item.commentcount}</span> <img src={'/static/icons/comment-outline.png'} alt="comment section" />
+                    </div>
+                  </div>
                 </div>
-                <div className="profile-profile_division-right-post--actions">
-                  <div className="contentcard_socials_comment">
-                    <span className="text-muted">{item.upvotecount}</span> <img src={'/static/icons/thumb-up-outline.png'} alt="comment section" />
-                  </div>
-                  <div className="contentcard_socials_comment">
-                    <span className="text-muted">{item.downvotecount}</span> <img src={'/static/icons/thumb-down-outline.png'} alt="comment section" />
-                  </div>
-                  <div className="contentcard_socials_comment">
-                    <span className="text-muted">{item.commentcount}</span> <img src={'/static/icons/comment-outline.png'} alt="comment section" />
-                  </div>
-                </div>
-              </div>
+              </Link>
             );
           })}
         </>

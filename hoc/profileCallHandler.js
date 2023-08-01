@@ -19,11 +19,9 @@ export const useProfileCallHandler = (type) => {
         ? API.myBookmarksApi
         : ''
     ).then((data) => {
-      console.log('=============', data?.data);
       if (data?.data?.length) setPostData(data?.data);
     });
   };
-  console.log({ type });
   useEffect(() => {
     if (type !== PROFILE_LIST_TYPE.me) getPostData();
   }, [type]);

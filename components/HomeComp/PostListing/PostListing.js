@@ -7,7 +7,7 @@ const PostListing = (props) => {
   const { allResourceStore } = props;
 
   return (
-    <div className="row-12">
+    <div>
       {allResourceStore?.length ? (
         <>
           {[...allResourceStore]?.reverse()?.map((data, index) => {
