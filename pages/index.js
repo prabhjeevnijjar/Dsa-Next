@@ -1,17 +1,26 @@
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import AddFab from '../common/Headers.js/AddFab';
-import PostListing from '../components/HomeComp/PostListing/PostListing';
 import Search from '../components/BookmarkComp/Search';
 import * as actionCreator from '../redux/Actions/ActionCreator/ResourceAction';
-import Link from 'next/link';
+import RightPostListing from '../components/HomeComp/RightPostListing/RightPostListing';
+import API from '../config/endpoints.json';
+import PostCard from '../components/HomeComp/PostListing/PostCard';
+import PostCardLoader from '../components/HomeComp/Loaders/PostCardLoader';
 
-const HomePage = (props) => {
-  const { GetResourcesAction } = props;
+const HomePage = () => {
+  const [resData, setImages] = useState([]);
+  const [page, setPage] = useState(0);
+
+  const fetchImages = async (page) => {
+    const response = await fetch('http://localhost:3001' + API.getAllResourcesApi + '?page=' + page || 1);
+    const { data } = await response.json();
+    setImages((prev) => [...prev, ...data]);
+  };
 
   useEffect(() => {
-    GetResourcesAction();
-  }, []);
+    fetchImages(page);
+  }, [page]);
 
   return (
     <Fragment>
@@ -21,25 +30,21 @@ const HomePage = (props) => {
           <div className="row">
             <div className="col-12 col-md-8">
               <h5>Latest</h5>
-              <PostListing />
+              <div>
+                {resData?.length ? (
+                  <>
+                    {[...resData]?.map((data, index) => {
+                      return <PostCard key={index} data={data} isLast={index === resData.length - 1} newLimit={() => setPage(page + 1)} />;
+                    })}
+                  </>
+                ) : (
+                  [0, 1, 2].map((item, index) => {
+                    return <PostCardLoader key={index} />;
+                  })
+                )}
+              </div>
             </div>
-            <div className="col-4">
-              <h5>What&apos; new</h5>
-              {[0, 0, 0, 0].map((item, index) => {
-                return (
-                  <div className="trending-card my-2 p-3" key={index}>
-                    <Link href={'/discussion/postId'} as={'/discussion/123'} style={{ color: 'inherit', textDecoration: 'none' }}>
-                      <div className="m-3">
-                        <b>This is the best React resource</b>
-                      </div>
-                    </Link>
-
-                    <div className="m-3 fw-500">Web Dev Simplified</div>
-                    <div className="m-3 text-muted">Youtube</div>
-                  </div>
-                );
-              })}
-            </div>
+            <RightPostListing />
           </div>
         </div>
 
@@ -51,6 +56,7 @@ const HomePage = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({ GetResourcesAction: () => dispatch(actionCreator.GetResourcesAction()) });
+const mapDispatchToProps = (dispatch) => ({ GetResourcesAction: (payload) => dispatch(actionCreator.GetResourcesAction(payload)) });
+const mapStateToProps = (state) => ({ allResourceStore: state.resourceInfo.allResourceStore });
 
-export default connect(null, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

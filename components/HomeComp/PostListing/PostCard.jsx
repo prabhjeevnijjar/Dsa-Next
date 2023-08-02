@@ -1,14 +1,28 @@
 import Link from 'next/link';
-import { Fragment } from 'react';
+import { Fragment, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { addBookmarkHandler, upVoteHandler, downVoteHandler, showCommentsHandler } from '../../../utils/resourceActions';
 
 const PostCard = (props) => {
-  const { data, userData } = props;
+  const { data, userData, newLimit, isLast } = props;
+  const cardRef = useRef();
+
+  useEffect(() => {
+    if (!cardRef?.current) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (isLast && entry.isIntersecting) {
+        newLimit();
+        observer.unobserve(entry.target);
+      }
+    });
+
+    observer.observe(cardRef.current);
+  }, [isLast]);
 
   return (
     <Fragment>
-      <div className="card col-12 my-2 ">
+      <div className="post-card card col-12 my-2 " ref={cardRef}>
         <div className=" card--user row">
           <div className="col-9">
             <label className="btn-circle btn-sm btn-secondary" type="button">

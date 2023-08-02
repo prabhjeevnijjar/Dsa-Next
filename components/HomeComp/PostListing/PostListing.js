@@ -1,16 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PostCard from './PostCard';
 import PostCardLoader from '../Loaders/PostCardLoader';
 
 const PostListing = (props) => {
-  const { allResourceStore } = props;
-
   return (
     <div>
-      {allResourceStore?.length ? (
+      {props.images?.length ? (
         <>
-          {[...allResourceStore]?.reverse()?.map((data, index) => {
+          {[...props.images]?.map((data, index) => {
             return <PostCard key={index} data={data} />;
           })}
         </>
