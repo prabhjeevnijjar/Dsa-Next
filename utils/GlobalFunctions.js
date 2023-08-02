@@ -10,6 +10,7 @@ export const checkInputHandler = (event) => {
   }
   return true;
 };
+
 export const milliToDate = (ms) => {
   return new Date(ms).toDateString() || '';
 };

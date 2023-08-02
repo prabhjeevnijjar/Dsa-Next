@@ -3,6 +3,7 @@ import Navbar from './Headers.js/Navbar';
 import { connect } from 'react-redux';
 import Cookies from 'js-cookie';
 import * as authActionCreator from '../redux/Actions/ActionCreator/AuthAction';
+import LoginModal from '../components/commonComp/LoginModal';
 
 const Layout = (props) => {
   useEffect(() => {
@@ -13,6 +14,7 @@ const Layout = (props) => {
     <Fragment>
       <Navbar />
       {props.children}
+      <LoginModal />
     </Fragment>
   );
 };

@@ -10,9 +10,8 @@ export const GetResourcesAction = (payload) => async (dispatch, getState, api) =
     .get(API.getAllResourcesApi, payload)
     .then((res) => {
       if (res.data.code === 200) {
-        if (res.data.status === true) {
-          dispatch(actionType.getAllResources(res.data?.data));
-        }
+        if (res.data.status === true) dispatch(actionType.getAllResources(res.data?.data));
+
         dispatch(actionType.loadingSuccess({ resourceLoading: false }));
       } else {
         toast.error('Something went wrong !');

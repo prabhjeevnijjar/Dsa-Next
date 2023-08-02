@@ -20,6 +20,9 @@
   .fs-22 {
     font-size: 22px;
   }
+  .fs-26 {
+    font-size: 26px;
+  }
   body {
     font-family: 'Poppins', sans-serif;
     background-color: #f3f3f3;
@@ -43,14 +46,14 @@
     padding:8px; 
   }
   .searchbar input{
-    width:100%;
+    width:60%;
     height: 50px;
     background-color: rgb(240, 240, 240);
     display: block;
     margin:0 auto; 
     border-radius: 12px;
     border-width: 0.25px;
-    border: none;
+    border: #747474;
   }
   .searchbar input:focus {
     outline: none;
@@ -67,6 +70,9 @@
   width: 100%;
   border: none;
   border-radius: 10px;
+}
+.trending-card-url {
+  width: 16px;
 }
   /* signup */
   .signupbase{
