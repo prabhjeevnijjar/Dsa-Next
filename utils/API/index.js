@@ -22,7 +22,7 @@ const profilePostsCallHandler = async (endpoint) => {
   if (endpoint) {
     try {
       const token = await Cookies.get('auth-token');
-      const response = await fetch('http://localhost:3001' + endpoint, {
+      const response = await fetch('https://dsa-help-platform.onrender.com' + endpoint, {
         method: 'GET',
         headers: {
           'Content-type': 'application/json',

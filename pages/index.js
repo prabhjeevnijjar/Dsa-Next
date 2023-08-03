@@ -13,7 +13,7 @@ const HomePage = () => {
   const [page, setPage] = useState(0);
 
   const fetchImages = async (page) => {
-    const response = await fetch('http://localhost:3001' + API.getAllResourcesApi + '?page=' + page || 1);
+    const response = await fetch('https://dsa-help-platform.onrender.com' + API.getAllResourcesApi + '?page=' + page || 1);
     const { data } = await response.json();
     setImages((prev) => [...prev, ...data]);
   };
