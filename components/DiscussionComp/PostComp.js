@@ -1,5 +1,6 @@
 const PostComp = (props) => {
   const { resData } = props;
+  console.log({ resData });
   return (
     <>
       <div className="contentcards">
@@ -7,6 +8,9 @@ const PostComp = (props) => {
           <div className="contentcard">
             <div className="contentcard_title">
               <a>{resData.data[0].title}</a>
+            </div>
+            <div className="contentcard_desc">
+              <a>{resData.data[0].description}</a>
             </div>
             <div className="contentcard_tags">
               {resData.data[0]?.resourcestudytype?.map((data, index) => {
@@ -43,4 +47,5 @@ const PostComp = (props) => {
     </>
   );
 };
+
 export default PostComp;

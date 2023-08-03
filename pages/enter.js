@@ -68,7 +68,7 @@ const EnterPage = (props) => {
               <br />
               <br />
               <button className="button" type="submit" value="Sign In" onClick={() => submitCheckEmail()}>
-                Sign In
+                Next
               </button>
             </div>
           </div>
@@ -100,7 +100,7 @@ const EnterPage = (props) => {
                 <input name="password" type="password" value={state.password} required onChange={(e) => onChangeHandler(e)} /> <br />
                 <br />
                 <br />
-                <input className="button" type="button" value="Login" onClick={() => loginSubmmitHandler()} />
+                <input className="button" type="button" value="Next" onClick={() => loginSubmmitHandler()} />
               </form>
             </div>
           </div>
@@ -178,7 +178,7 @@ const EnterPage = (props) => {
               <br />
               <br />
               <button className="button" type="submit" onClick={() => submitSignUp()}>
-                Sign Up
+                Next
               </button>
             </div>
           </div>

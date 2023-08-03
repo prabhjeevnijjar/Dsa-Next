@@ -67,6 +67,8 @@ You can sign up and add your own recomendation of a learning resource.
             <li>Custom note with bookmark</li>
         </ul>
 </div>   
-                  
-              
+<h2>IDEAS</h2>
+BACK TO TOP
+LEFT SM=LIM MENUE WITH ALL TECHNOLIGIS LOGO WHEN CLICKD TAKES TO TO THAT PAGE WITH THAT TEWCHNOLOGY LISTINGS
+      
 

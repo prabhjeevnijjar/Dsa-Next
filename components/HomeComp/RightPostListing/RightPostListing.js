@@ -1,9 +1,10 @@
 import RightPostCard from './RightPostCard';
 
-const RightPostListing = () => {
+const RightPostListing = (props) => {
+  const { heading } = props;
   return (
-    <div className="col-4">
-      <h5>What&apos; New</h5>
+    <div className="col-md-4">
+      <h5>{heading}</h5>
       {[0, 0, 0, 0].map((item, index) => {
         return <RightPostCard item={item} key={index} />;
       })}

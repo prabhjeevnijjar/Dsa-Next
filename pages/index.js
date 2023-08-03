@@ -7,10 +7,13 @@ import RightPostListing from '../components/HomeComp/RightPostListing/RightPostL
 import API from '../config/endpoints.json';
 import PostCard from '../components/HomeComp/PostListing/PostCard';
 import PostCardLoader from '../components/HomeComp/Loaders/PostCardLoader';
+import useMediaQuery from '../hoc/useMediaQuery';
 
-const HomePage = () => {
+const HomePage = (props) => {
+  const { userData } = props;
   const [resData, setImages] = useState([]);
   const [page, setPage] = useState(0);
+  const isMobile = useMediaQuery('(max-width: 767px)');
 
   const fetchImages = async (page) => {
     const response = await fetch('https://dsa-help-platform.onrender.com' + API.getAllResourcesApi + '?page=' + page || 1);
@@ -44,19 +47,16 @@ const HomePage = () => {
                 )}
               </div>
             </div>
-            <RightPostListing />
+            {!isMobile ? <RightPostListing heading={`${"What's New"}`} /> : null}
           </div>
         </div>
-
-        <div className="d-block d-md-none">
-          <AddFab />
-        </div>
+        {isMobile && userData.isLogin ? <AddFab /> : null}
       </div>
     </Fragment>
   );
 };
 
 const mapDispatchToProps = (dispatch) => ({ GetResourcesAction: (payload) => dispatch(actionCreator.GetResourcesAction(payload)) });
-const mapStateToProps = (state) => ({ allResourceStore: state.resourceInfo.allResourceStore });
+const mapStateToProps = (state) => ({ userData: state.authInfo.userInfoStore, allResourceStore: state.resourceInfo.allResourceStore });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
