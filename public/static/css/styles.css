@@ -20,8 +20,12 @@
   .fs-22 {
     font-size: 22px;
   }
+  .fs-26 {
+    font-size: 26px;
+  }
   body {
     font-family: 'Poppins', sans-serif;
+    background-color: #f3f3f3;
   }
   .no_link_style a{
     color: white;
@@ -42,14 +46,14 @@
     padding:8px; 
   }
   .searchbar input{
-    width:100%;
+    width:60%;
     height: 50px;
     background-color: rgb(240, 240, 240);
     display: block;
     margin:0 auto; 
     border-radius: 12px;
     border-width: 0.25px;
-    border: none;
+    border: #747474;
   }
   .searchbar input:focus {
     outline: none;
@@ -60,6 +64,16 @@
  .searchbar_date {
   font-size: 12px;
  }
+.trending-card {
+  min-height: 140px;
+  background-color: white;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+}
+.trending-card-url {
+  width: 16px;
+}
   /* signup */
   .signupbase{
     width: 100%;
@@ -117,7 +131,7 @@
     padding: 6px 10px 0px 10px;
   }
   .contentcard_title{
-    font-size: 24px;
+    font-size: 34px;
     text-align: center;
   }
   .contentcard_tags{
@@ -190,6 +204,18 @@
     width: 120px;
     height: 120px;
     background-color: blueviolet;
+  }
+  .profile-profile_image--name {
+    font-size: 30px;
+    position: relative;
+    top: 26px;
+    left: 16px;
+  }
+  .profile-profile_image--edit {
+    position: relative;
+    width: 27px;
+    top: 50px;
+    left: 50px;
   }
   .profile-profile_division {
     height: 100vh;
@@ -362,13 +388,15 @@
     height: 40px;
     width: 130px;
     border: none;
-    border-radius: 6px;
+    border-radius: 12px;
     color: #747474;
     font-size: 14px;
   }
   .card {
     /* height: 250px; */
     padding: 15px;
+    border: none;
+    border-radius: 10px;
   }
   .card--user {
     height: 50px;

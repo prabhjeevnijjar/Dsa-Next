@@ -3,6 +3,12 @@
   "loginApi": "/api/login",
   "checkTokenApi": "/api/check-token",
   "registerApi": "/api/register",
+
+  "myPostsApi": "/profile/my-posts",
+  "myLikesApi": "/profile/my-liked",
+  "myCommentsApi": "/profile/my-commented",
+  "getResourceByIdApi": "/homepage/resource-id",
+  "myBookmarksApi": "/homepage/bookmark",
   "getBookmarksApi": "/homepage/bookmark",
   "getAllResourcesApi": "/homepage/resource",
   "postResourceApi": "/homepage/resource"

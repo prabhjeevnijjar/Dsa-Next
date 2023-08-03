@@ -5,7 +5,6 @@ import * as authActionCreator from '../../redux/Actions/ActionCreator/AuthAction
 
 const Navbar = (props) => {
   const { userInfoStore } = props;
-  console.log({ userInfoStore });
   return (
     <Fragment>
       <nav className="navbar navbar-dark bg-dark navbar-expand-md justify-content-between">

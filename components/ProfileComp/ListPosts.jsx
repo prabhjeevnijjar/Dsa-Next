@@ -1,4 +1,8 @@
-const ListPosts = () => {
+import Link from 'next/link';
+import { milliToDate } from '../../utils/GlobalFunctions';
+
+const ListPosts = (props) => {
+  const { postData } = props;
   return (
     <section className="p-2">
       <div className="my-3 text-right">
@@ -25,28 +29,34 @@ const ListPosts = () => {
           </div>
         </div>
       </div>
-      {[0, 0, 0, 0].map((item, index) => {
-        return (
-          <div className="profile-profile_division-right-post bg-white mt-3 cursor-pointer" key={index}>
-            <div className="profile-profile_division-right-post--content">
-              <div className="fs-10">12 March 2023</div>
-              <div className="font-weight-bold">This is a heading</div>
-              <div>This is a descriptin for heading</div>
-            </div>
-            <div className="profile-profile_division-right-post--actions">
-              <div className="contentcard_socials_comment">
-                <span className="text-muted">12</span> <img src={'/static/icons/thumb-up-outline.png'} alt="comment section" />
-              </div>
-              <div className="contentcard_socials_comment">
-                <span className="text-muted">10</span> <img src={'/static/icons/thumb-down-outline.png'} alt="comment section" />
-              </div>
-              <div className="contentcard_socials_comment">
-                <span className="text-muted">10</span> <img src={'/static/icons/comment-outline.png'} alt="comment section" />
-              </div>
-            </div>
-          </div>
-        );
-      })}
+      {postData?.length ? (
+        <>
+          {postData.map((item, index) => {
+            return (
+              <Link href={'/discussion/postId'} as={`/discussion/${item._id}`} style={{ color: 'inherit', textDecoration: 'none' }} key={index}>
+                <div className="profile-profile_division-right-post bg-white mt-3 cursor-pointer">
+                  <div className="profile-profile_division-right-post--content">
+                    <div className="fs-10">{milliToDate(item.postedDate)}</div>
+                    <div className="font-weight-bold">{item.title}</div>
+                    <div>{item.description}</div>
+                  </div>
+                  <div className="profile-profile_division-right-post--actions">
+                    <div className="contentcard_socials_comment">
+                      <span className="text-muted">{item.upvotecount}</span> <img src={'/static/icons/thumb-up-outline.png'} alt="comment section" />
+                    </div>
+                    <div className="contentcard_socials_comment">
+                      <span className="text-muted">{item.downvotecount}</span> <img src={'/static/icons/thumb-down-outline.png'} alt="comment section" />
+                    </div>
+                    <div className="contentcard_socials_comment">
+                      <span className="text-muted">{item.commentcount}</span> <img src={'/static/icons/comment-outline.png'} alt="comment section" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </>
+      ) : null}
     </section>
   );
 };

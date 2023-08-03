@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import * as bookmarkActionCreator from '../redux/Actions/ActionCreator/BookmarkAction';
 const MyBookmarksPage = (props) => {
   const { allBookmarkStore } = props;
-  console.log({ allBookmarkStore });
 
   useEffect(() => {
     props.GetBookmarksAction();
   }, []);
+
   return (
     <Fragment>
       <div className="bookmarks_container d-flex my-5">
