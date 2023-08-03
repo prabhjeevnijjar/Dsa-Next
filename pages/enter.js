@@ -47,7 +47,7 @@ const EnterPage = (props) => {
       {checkLoginStore.onStep === 1 ? (
         <div className="d-flex d-row justify-content-center p-0 m-0">
           <div className="signupbase">
-            <div className="heading">
+            <div className="heading text-center">
               <h1>Sign In</h1>
             </div>
             <br />
@@ -76,7 +76,7 @@ const EnterPage = (props) => {
       ) : checkLoginStore.onStep === 2 ? (
         <div className="d-flex d-row justify-content-center p-0 m-0">
           <div className="signupbase">
-            <div className="heading">
+            <div className="heading text-center">
               <h1>Login</h1>
               <a>Don&apos;t have an account? </a>
               <span

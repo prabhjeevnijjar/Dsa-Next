@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
+
 import * as authActionCreator from '../../redux/Actions/ActionCreator/AuthAction';
 
 const Navbar = (props) => {
@@ -13,17 +14,9 @@ const Navbar = (props) => {
         </Link>
         <div className="d-flex flex-column justify-content-end">
           {!userInfoStore.isLogin ? (
-            <label
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="true"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </label>
+            <Link href="/enter" className="btn btn-outline-success my-2 my-sm-0 no_link_style">
+              Sign In
+            </Link>
           ) : (
             <div className="dropdown dropdown-menu-left">
               <label className="btn-circle btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,17 +39,6 @@ const Navbar = (props) => {
               </div>
             </div>
           )}
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto">
-              {!userInfoStore.isLogin ? (
-                <Fragment>
-                  <Link href="/enter" className="nav-item btn btn-outline-success my-2 my-sm-0 no_link_style">
-                    Sign In
-                  </Link>
-                </Fragment>
-              ) : null}
-            </ul>
-          </div>
         </div>
       </nav>
     </Fragment>
