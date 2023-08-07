@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addBookmarkHandler } from '../../utils/resourceActions';
+import { addBookmarkHandler } from '../../utils/API/resourceActions';
 
 const PostComp = (props) => {
   const { resData, userData } = props;
