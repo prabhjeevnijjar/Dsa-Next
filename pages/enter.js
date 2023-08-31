@@ -47,7 +47,7 @@ const EnterPage = (props) => {
       {checkLoginStore.onStep === 1 ? (
         <div className="d-flex d-row justify-content-center p-0 m-0">
           <div className="signupbase">
-            <div className="heading">
+            <div className="heading text-center">
               <h1>Sign In</h1>
             </div>
             <br />
@@ -68,7 +68,7 @@ const EnterPage = (props) => {
               <br />
               <br />
               <button className="button" type="submit" value="Sign In" onClick={() => submitCheckEmail()}>
-                Sign In
+                Next
               </button>
             </div>
           </div>
@@ -76,7 +76,7 @@ const EnterPage = (props) => {
       ) : checkLoginStore.onStep === 2 ? (
         <div className="d-flex d-row justify-content-center p-0 m-0">
           <div className="signupbase">
-            <div className="heading">
+            <div className="heading text-center">
               <h1>Login</h1>
               <a>Don&apos;t have an account? </a>
               <span
@@ -100,7 +100,7 @@ const EnterPage = (props) => {
                 <input name="password" type="password" value={state.password} required onChange={(e) => onChangeHandler(e)} /> <br />
                 <br />
                 <br />
-                <input className="button" type="button" value="Login" onClick={() => loginSubmmitHandler()} />
+                <input className="button" type="button" value="Next" onClick={() => loginSubmmitHandler()} />
               </form>
             </div>
           </div>
@@ -178,7 +178,7 @@ const EnterPage = (props) => {
               <br />
               <br />
               <button className="button" type="submit" onClick={() => submitSignUp()}>
-                Sign Up
+                Next
               </button>
             </div>
           </div>

@@ -1,12 +1,20 @@
+import { connect } from 'react-redux';
+import { addBookmarkHandler } from '../../utils/API/resourceActions';
+
 const PostComp = (props) => {
-  const { resData } = props;
+  const { resData, userData } = props;
+  console.log({ resData });
+
   return (
     <>
       <div className="contentcards">
-        <div className="rootclass" key={1}>
+        <div className="rootclass">
           <div className="contentcard">
             <div className="contentcard_title">
-              <a>{resData.data[0].title}</a>
+              <a>{resData.data[0]?.title}</a>
+            </div>
+            <div className="contentcard_desc">
+              <a>{resData.data[0]?.description}</a>
             </div>
             <div className="contentcard_tags">
               {resData.data[0]?.resourcestudytype?.map((data, index) => {
@@ -15,7 +23,7 @@ const PostComp = (props) => {
               {resData.data[0]?.resourcesubtype?.map((data, index) => {
                 return <span key={index}>#{data}&nbsp;</span>;
               })}
-              #{resData.data[0].resourcetype}&nbsp;
+              #{resData.data[0]?.resourcetype}&nbsp;
             </div>
             <div className="contentcard_socials">
               <div className="contentcard_socials_comment">
@@ -31,7 +39,7 @@ const PostComp = (props) => {
                 <a> {resData.data[0].commentcount}</a>
               </div>
 
-              <div className="contentcard_socials_comment">
+              <div className="contentcard_socials_comment" onClick={() => addBookmarkHandler({ userData, resData })}>
                 <img src={'/static/icons/bookmark-border.png'} alt="bookmark" />
               </div>
             </div>
@@ -43,4 +51,11 @@ const PostComp = (props) => {
     </>
   );
 };
-export default PostComp;
+
+const mapStateToProps = (state) => {
+  return {
+    userData: state.authInfo.userInfoStore,
+  };
+};
+
+export default connect(mapStateToProps)(PostComp);

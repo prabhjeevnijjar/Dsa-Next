@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Fragment, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { addBookmarkHandler, upVoteHandler, downVoteHandler, showCommentsHandler } from '../../../utils/resourceActions';
+import { addBookmarkHandler, upVoteHandler, downVoteHandler, showCommentsHandler } from '../../../utils/API/resourceActions';
 
 const PostCard = (props) => {
   const { data, userData, newLimit, isLast } = props;

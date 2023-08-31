@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Cookies from 'js-cookie';
 import * as authActionCreator from '../redux/Actions/ActionCreator/AuthAction';
 import LoginModal from '../components/commonComp/LoginModal';
+import Footer from './Footers';
 
 const Layout = (props) => {
   useEffect(() => {
@@ -15,6 +16,7 @@ const Layout = (props) => {
       <Navbar />
       {props.children}
       <LoginModal />
+      <Footer />
     </Fragment>
   );
 };
