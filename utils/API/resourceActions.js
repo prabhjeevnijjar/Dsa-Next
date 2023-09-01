@@ -6,7 +6,7 @@ export const addBookmarkHandler = async ({ userData, resData }) => {
   else {
     try {
       const token = await Cookies.get('auth-token');
-      const response = await fetch('http://localhost:3001' + API.addBookmarkApi + '?resid=' + resData.data[0]._id, {
+      const response = await fetch('https://dsa-help-platform.onrender.com' + API.addBookmarkApi + '?resid=' + resData.data[0]._id, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
