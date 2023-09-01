@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 
 const bookmarksCallHandler = async () => {
   const token = await Cookies.get('auth-token');
-  await fetch('http://localhost:3001' + API.getBookmarksApi, {
+  await fetch('https://dsa-help-platform.onrender.com' + API.getBookmarksApi, {
     method: 'GET',
     headers: {
       'Content-type': 'application/json',
@@ -23,7 +23,7 @@ const profilePostsCallHandler = async (endpoint) => {
   if (endpoint) {
     try {
       const token = await Cookies.get('auth-token');
-      const response = await fetch('http://localhost:3001' + endpoint, {
+      const response = await fetch('https://dsa-help-platform.onrender.com' + endpoint, {
         method: 'GET',
         headers: {
           'Content-type': 'application/json',
@@ -38,7 +38,7 @@ const profilePostsCallHandler = async (endpoint) => {
 const updateProfileHandler = async (body) => {
   try {
     const token = await Cookies.get('auth-token');
-    const response = await fetch('http://localhost:3001' + API.updateProfileApi, {
+    const response = await fetch('https://dsa-help-platform.onrender.com' + API.updateProfileApi, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
