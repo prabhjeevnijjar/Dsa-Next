@@ -14,7 +14,7 @@ const HomePage = (props) => {
   const [resData, setImages] = useState([]);
   const [page, setPage] = useState(0);
   const isMobile = useMediaQuery('(max-width: 767px)');
-  console.log({ userData });
+
   const fetchImages = async (page) => {
     const response = await fetch('https://dsa-help-platform.onrender.com' + API.getAllResourcesApi + '?page=' + page || 1);
     const { data } = await response.json();
