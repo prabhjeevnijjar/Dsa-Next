@@ -21,7 +21,7 @@ const DiscussionPage = (props) => {
               {resData.code === 200 ? (
                 <Fragment>
                   <PostComp resData={resData} />
-                  <CommentSection />
+                  <CommentSection resData={resData} />
                 </Fragment>
               ) : (
                 <>404 No Post found</>

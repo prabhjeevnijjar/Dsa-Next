@@ -123,7 +123,7 @@ const EnterPage = (props) => {
             </div>
             <br />
             <br />
-            <div className="inputs">
+            <div className="inputs pb-5">
               <a>First name</a> <br />
               <input
                 name="fname"
@@ -174,10 +174,7 @@ const EnterPage = (props) => {
                   setState({ ...state, [e.target.name]: e.target.value });
                 }}
               />
-              <br />
-              <br />
-              <br />
-              <button className="button" type="submit" onClick={() => submitSignUp()}>
+              <button className="button mb-5" type="submit" onClick={() => submitSignUp()}>
                 Next
               </button>
             </div>
