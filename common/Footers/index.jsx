@@ -23,8 +23,8 @@ const Footer = () => {
         </div>
       ) : null}
       <div className={`footer bg-dark  ${router.asPath === '/enter' ? 'position-fixed' : ' '}`}>
-        <div className="text-white d-flex fixed-bottom justify-content-center my-3">
-          <div className="">Created by Prabhjeev</div> <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span> <div className="text-white">Copyright @2023</div>{' '}
+        <div className="text-white d-flex justify-content-center my-3 py-2">
+          <div className=""></div> <span>&nbsp;&nbsp;</span> <div className="text-white">&copy;2023</div>{' '}
         </div>
       </div>
     </>
