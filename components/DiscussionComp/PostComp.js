@@ -3,7 +3,6 @@ import { addBookmarkHandler } from '../../utils/API/resourceActions';
 
 const PostComp = (props) => {
   const { resData, userData } = props;
-  console.log({ resData });
 
   return (
     <>

@@ -1,6 +1,6 @@
-import { toast } from 'react-hot-toast';
 import API from '../../config/endpoints.json';
 import Cookies from 'js-cookie';
+import axios from 'axios';
 
 const bookmarksCallHandler = async () => {
   const token = await Cookies.get('auth-token');
@@ -35,23 +35,29 @@ const profilePostsCallHandler = async (endpoint) => {
   }
 };
 
-const updateProfileHandler = async (body) => {
+const updateProfileHandler = async (body, isProfileImage) => {
+  console.log({ body: body.profileImg });
   try {
     const token = await Cookies.get('auth-token');
-    const response = await fetch('https://dsa-help-platform.onrender.com' + API.updateProfileApi, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body,
+    const response = await axios.post('https://dsa-help-platform.onrender.com' + isProfileImage ? API.updateProfileImgApi : API.updateProfileApi, body.profileImg, {
+      'Content-type': isProfileImage ? 'multipart/form-data' : 'application/json',
+      Authorization: `Bearer ${token}`,
     });
-    const res = await response.json();
-    if (res.code === 201) {
-      toast.success(res.message);
-    } else {
-      toast.error(res.message);
-    }
+    console.log({ response });
+    // const response = await fetch('http://localhost:3001' + isProfileImage ? API.updateProfileImgApi : API.updateProfileApi, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-type': isProfileImage ? 'multipart/form-data' : 'application/json',
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    //   body: body.profileImg,
+    // });
+    // const res = await response.json();
+    // if (res.code === 201) {
+    //   toast.success(res.message);
+    // } else {
+    //   toast.error(res.message);
+    // }
   } catch (e) {}
 };
 
@@ -64,7 +70,6 @@ const fetchCommentsOnPost = async (setComments, resourceId) => {
       },
     });
     const res = await response.json();
-    console.log(res);
     if (res.code === 200) {
       setComments(res.data);
     }
@@ -86,10 +91,8 @@ const addCommentsOnPostHandler = async (comments, setComments, resourceId, newCo
       }),
     });
     const res = await response.json();
-    console.log(res);
-    console.log({ comments });
+
     if (res.code === 201) fetchCommentsOnPost(setComments, resourceId);
-    // else window.$('#loginModal').modal('show');
   } catch (e) {}
 };
 

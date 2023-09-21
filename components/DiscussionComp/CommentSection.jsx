@@ -8,8 +8,6 @@ const CommentSection = (props) => {
 
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
-  console.log({ comments });
-
   useEffect(() => {
     fetchCommentsOnPost(setComments, resourceId);
   }, [resData]);

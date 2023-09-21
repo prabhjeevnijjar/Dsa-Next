@@ -22,8 +22,7 @@ const ListMe = (props) => {
         lastName: state.lastname || '',
         profileImg: '',
       };
-      console.log({ data });
-      updateProfileHandler(JSON.stringify(data));
+      updateProfileHandler(JSON.stringify(data), false);
     }
   };
 

@@ -11,7 +11,6 @@ export const GetResourcesAction = (payload, setImages) => async (dispatch, getSt
     .then((res) => {
       if (res.data.code === 200) {
         if (res.data.status === true) {
-          console.log('==-=-=-=-', res.data);
           setImages((prev) => [...prev, ...res.data?.data]);
           // dispatch(actionType.getAllResources(res.data?.data));
         }
