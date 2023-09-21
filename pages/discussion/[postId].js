@@ -37,7 +37,7 @@ const DiscussionPage = (props) => {
 
 DiscussionPage.getInitialProps = async (ctx) => {
   try {
-    const res = await fetch('https://dsa-help-platform.onrender.com' + API.getResourceByIdApi + '?resId=' + ctx.query.postId);
+    const res = await fetch(process.env.NEXT_PUBLIC_BASE_URL + API.getResourceByIdApi + '?resId=' + ctx.query.postId);
     const json = await res.json();
     return { resData: json };
   } catch (err) {

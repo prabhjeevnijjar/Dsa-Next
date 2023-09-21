@@ -1,16 +1,13 @@
 import axios from 'axios';
-import getConfig from 'next/config';
 import thunkMiddleware from 'redux-thunk';
 import rootReducers from '../Reducers/rootReducer';
 import { configureStore } from '@reduxjs/toolkit';
 
-const { baseUrl } = getConfig().publicRuntimeConfig;
 let store;
 
 function initStore(initialState) {
   const axiosInstance = axios.create({
-    baseURL: baseUrl || 'https://dsa-help-platform.onrender.com',
-    //  'https://dsa-help-platform.onrender.com',
+    baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   });
   return configureStore({
     reducer: rootReducers,

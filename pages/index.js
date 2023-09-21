@@ -8,20 +8,22 @@ import API from '../config/endpoints.json';
 import PostCard from '../components/HomeComp/PostListing/PostCard';
 import PostCardLoader from '../components/HomeComp/Loaders/PostCardLoader';
 import useMediaQuery from '../hoc/useMediaQuery';
+import axios from 'axios';
 
 const HomePage = (props) => {
   const { userData } = props;
   const [resData, setImages] = useState([]);
   const [page, setPage] = useState(0);
   const isMobile = useMediaQuery('(max-width: 767px)');
-
   const fetchImages = async (page) => {
-    const response = await fetch('https://dsa-help-platform.onrender.com' + API.getAllResourcesApi + '?page=' + page || 1);
+    const response = await axios.get(process.env.NEXT_PUBLIC_BASE_URL + API.getAllResourcesApi + '?page=' + page || 1, { mode: 'cors' });
     const { data } = await response.json();
     setImages((prev) => [...prev, ...data]);
   };
 
   useEffect(() => {
+    console.log('==============', process.env.NEXT_PUBLIC_BASE_URL);
+
     fetchImages(page);
   }, [page]);
 

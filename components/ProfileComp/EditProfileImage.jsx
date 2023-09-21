@@ -14,7 +14,7 @@ const EditProfileImage = () => {
       try {
         const token = await Cookies.get('auth-token');
 
-        const response = await fetch('http://localhost:4000' + API.updateProfileImgApi, {
+        const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + API.updateProfileImgApi, {
           method: 'POST',
           headers: {
             // 'Content-type': 'multipart/form-data',

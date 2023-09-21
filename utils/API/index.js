@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const bookmarksCallHandler = async () => {
   const token = await Cookies.get('auth-token');
-  await fetch('https://dsa-help-platform.onrender.com' + API.getBookmarksApi, {
+  await fetch(process.env.NEXT_PUBLIC_BASE_URL + API.getBookmarksApi, {
     method: 'GET',
     headers: {
       'Content-type': 'application/json',
@@ -23,7 +23,7 @@ const profilePostsCallHandler = async (endpoint) => {
   if (endpoint) {
     try {
       const token = await Cookies.get('auth-token');
-      const response = await fetch('https://dsa-help-platform.onrender.com' + endpoint, {
+      const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + endpoint, {
         method: 'GET',
         headers: {
           'Content-type': 'application/json',
@@ -39,7 +39,7 @@ const updateProfileHandler = async (body, isProfileImage) => {
   console.log({ body: body.profileImg });
   try {
     const token = await Cookies.get('auth-token');
-    const response = await axios.post('https://dsa-help-platform.onrender.com' + isProfileImage ? API.updateProfileImgApi : API.updateProfileApi, body.profileImg, {
+    const response = await axios.post(process.env.NEXT_PUBLIC_BASE_URL + isProfileImage ? API.updateProfileImgApi : API.updateProfileApi, body.profileImg, {
       'Content-type': isProfileImage ? 'multipart/form-data' : 'application/json',
       Authorization: `Bearer ${token}`,
     });
